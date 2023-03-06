@@ -127,70 +127,58 @@ void reverse(lnode *&n) {
     n = p;
 }
 
+static int comparisons = 0;
 /////////////////////////
 // 8 - merge sorted lists, amount of comparisons <= length (a+b)
 lnode *merge(lnode *a, lnode *b) {
-    lnode *p = nullptr; 
-    lnode *q = nullptr; 
-
-    if (a == nullptr) {
+    if (a == nullptr) 
         return b;
-    } else if (b == nullptr) {
+  
+    if (b == nullptr)
         return a;
-    }
 
-    if (a->key < b->key) {
-        p = a;
-        q = p;
-        a = a->next;
-    } else {
-        p = b;
-        q = p;
-        b = b->next;
+    ++comparisons;
+    // max 1 comparison for each call
+    // a != nullptr && b != nullptr
+    if (a->key < b->key; ++comparisons) {              
+        a->next = merge(a->next, b);    // a is smaller, NEW a->next is bigger (from a or b)
+        return a;                       // return new a (with new a->next)       
     }
-    // go through both lists and compare elements until both lists are empty
-    while (a != nullptr && b != nullptr) {
-        if (a->key < b->key) {
-            q->next = a;
-            q = q->next;
-            a = a->next;
-        } else {
-            q->next = b;
-            q = q->next;
-            b = b->next;
-        }
+    else {
+        b->next = merge(a, b->next);
+        return b;                       // return new b (with new b->next)
     }
-
-    return p;
 }
 
 int main() {
-    // lnode *list = new lnode(1, new lnode(2, new lnode(3, new lnode(4, new lnode(5)))));
-    // print(list);
-    // std::cout << "6b sum\t" << sum(list) << std::endl;
-    // std::cout << "6c nth\t" << nth(list, 3) << std::endl;
-    // std::cout << "6d insert 0\t";
-    // insert(list, 0);
-    // print(list);
-    // std::cout << "6e ins after smaller 3\t";
-    // insert_after_smaller(list, 3);
-    // print(list);
-    // std::cout << "6f remove 3\t";
-    // remove(list, 3);
-    // print(list);
-    // std::cout << "6g filter even\t";
-    // filter(list, [](int x) { return x % 2 == 0; });
-    // print(list);
-    // std::cout << "6h destroy\t";
-    // destroy(list);
-    // print(list);
-    // std::cout << "7 reverse\t";
-    // list = new lnode(1, new lnode(2, new lnode(3, new lnode(4, new lnode(5)))));
-    // reverse(list);
-    // print(list);
+    lnode *list = new lnode(1, new lnode(2, new lnode(3, new lnode(4, new lnode(5)))));
+    print(list);
+    std::cout << "6b sum\t" << sum(list) << std::endl;
+    std::cout << "6c nth\t" << nth(list, 3) << std::endl;
+    std::cout << "6d insert 0\t";
+    insert(list, 0);
+    print(list);
+    std::cout << "6e ins after smaller 3\t";
+    insert_after_smaller(list, 3);
+    print(list);
+    std::cout << "6f remove 3\t";
+    remove(list, 3);
+    print(list);
+    std::cout << "6g filter even\t";
+    filter(list, [](int x) { return x % 2 == 0; });
+    print(list);
+    std::cout << "6h destroy\t";
+    destroy(list);
+    print(list);
+    std::cout << "7 reverse\t";
+    list = new lnode(1, new lnode(2, new lnode(3, new lnode(4, new lnode(5)))));
+    reverse(list);
+    print(list);
     std::cout << "8 merge\t";
-    lnode *list1 = new lnode(1, new lnode(1, new lnode(2, new lnode(7, new lnode(9)))));
+    //lnode *list1 = new lnode(1, new lnode(1, new lnode(2, new lnode(7, new lnode(9)))));
+    lnode *list1 = new lnode(1, new lnode(2, new lnode(3)));
     lnode *list2 = new lnode(2, new lnode(4, new lnode(6, new lnode(8, new lnode(10)))));
     lnode *list3 = merge(list1, list2);
     print(list3);
+    std::cout << "comparisons: " << comparisons << std::endl;
 }
