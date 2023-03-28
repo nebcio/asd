@@ -17,14 +17,19 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 
 add_executable(
-    list2
-    l2_z12345.cpp
+    # list2
+    # l2_z12345.cpp
+    list3
+    l3_z278.cpp
 )
 
 target_link_libraries(
-    list2
+    list3
     GTest::gtest_main
+    # list2
+    # GTest::gtest_main
 )
 
 include(GoogleTest)
-gtest_discover_tests(list2)
+# gtest_discover_tests(list2)
+gtest_discover_tests(list3)

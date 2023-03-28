@@ -1,0 +1,8 @@
+# build
+build
+
+# ref code
+*.cc
+
+# lists
+*.pdf
