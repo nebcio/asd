@@ -1,5 +1,7 @@
-# build
+# latex
 build
+*.synctex.gz
+model.tex
 
 # ref code
 *.cc

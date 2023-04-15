@@ -1,0 +1,116 @@
+\documentclass[18pt]{extarticle}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.9cm]{geometry}
+\usepackage[edges]{forest}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{tgbonum}
+\usepackage{xcolor}
+
+\begin{document}
+\large
+\fontfamily{cmss}\selectfont
+
+\title{Algorytmy i struktury danych (Lista 5)}
+\date{}
+\maketitle
+
+% \paragraph{quick sort, selekcja, sortowanie bez porównań}
+\paragraph{Zadanie 1} Udowodnij, że jeśli dla pewnego ustalonego q, takiego że 1 2 < q < 1, podczas sortowania szybkiego, procedura partition, na każdym poziomie rekurencji podzieli elementy tablicy w stosunku q : (1 - q) to algorytm wykona się w czasie O(n log n). Wskazówka: udowodnij, że głębokość rekurencji nie przekroczy - log n/ log q i zaniedbaj błędy za-
+okrągleń do wartości całkowitych.
+
+\paragraph{Zadanie 2} Ile porównań (zapisz wyniki w notacji O) wykona algorytm quicksort z procedurą partition w wersji Hoare’a, a ile w wersji z procedurę partition w wersji Lomuto dla danych: (a) posortowanych rosnąco, (b) posortowanych malejąco, (c) o identycznych kluczach?
+
+\paragraph{Zadanie 3} Napisz wzór na numer kubełka, do którego należy wrzucić liczbę x w sortowaniu kubełkowym, jeśli kubełków jest n, a elementy tablicy mieszczą się przedziale (a, b). Numeracja zaczyna się od 0. \\
+
+
+\begin{align*}
+    k = \left \lfloor \frac{n}{b - a} \cdot (x - a) \right \rfloor
+\end{align*}
+
+\paragraph{Zadanie 4} Dla jakich danych sortowanie metodą kubełkową ma złożoność O(n2)? \\
+
+
+Dane, które są rozłożone mocno nierównomiernie np. grupują się w jeden kubełek.
+
+\paragraph{Zadanie 5} Jak obliczyć k-tą od końca cyfrę w liczbie x? Jak obliczyć ilość cyfr liczby x? Przyjmujemy układ dziesiętny. Jak wyniki zmienią się w układzie pozycyjnym gdzie różnych cyfr jest m a ich wartości x należą do przedziału 0 <= x < m?
+
+
+\begin{gather*}
+    k_w = \left \lfloor \frac{x}{10^k} \right \rfloor \mod 10 \\ \\
+    \text{dla }x = 123456, k = 2, k_w = 4 \\ 
+    \frac{123456}{10^2} = 1234.56 \rightarrow 1234 \mod 10 = 4 \\ \\
+    \text{m różnych cyfr:} \\
+    k_w = \left \lfloor \frac{x}{m^k} \right \rfloor \mod m \\ \\
+    \text{dla }x = 123456, k = 3, m = 6, k_w = 3 \\
+    \frac{123456}{6^3} = 123.456 \rightarrow 123 \mod 6 = 3
+\end{gather*}
+
+\pagebreak
+\paragraph{Zadanie 6} Posortuj metodą sortowania pozycyjnego liczby: 101, 345, 103, 333, 432, 132, 543, 651, 791, 532, 987, 910, 643, 641, 12, 342, 498, 987, 965, 322, 121, 431, 350. W pisemnym rozwiązaniu pokaż, jak wygląda zawartość kolejek, za każdym razem, gdy tablica wyjściowa jest pusta i wszystkie liczby znajdują się w kolejkach, oraz jak wygląda tablica wyjściowa, za każdym razem, gdy sortowanie ze względu na kolejną cyfrę jest już zakończone.
+\begin{align*}
+    0: & \left(910, 350\right) \\
+    1: & \left(101, 651, 791, 641, 121, 431\right) \\
+    2: & \left(432, 132, 532, 12, 342, 322\right) \\
+    3: & \left(103, 333, 543, 643\right) \\
+    4: & \left(\right) \\
+    5: & \left(345, 965\right) \\
+    6: & \left(\right) \\
+    7: & \left(987, 987\right) \\
+    8: & \left(498\right) \\
+    9: & \left(\right)
+\end{align*}
+(910, 350, 101, 651, 791, 641, 121, 431, 432, 132, 532, 12, 342, 322, 103, 333, 543, 643, 345, 965, 987, 987, 498)
+
+\begin{align*}
+    0: & \left(101, 103\right) \\
+    1: & \left(910\right) \\
+    2: & \left(121, 12, 322\right) \\
+    3: & \left(431, 432, 132, 532, 333\right) \\
+    4: & \left(641, 342, 543, 643, 345\right) \\
+    5: & \left(350, 651\right) \\
+    6: & \left(965\right) \\
+    7: & \left(\right) \\
+    8: & \left(987, 987\right) \\
+    9: & \left(791, 498\right)
+\end{align*}
+(101, 103, 910, 121, 12, 322, 431, 432, 132, 532, 333, 641, 342, 543, 643, 345, 350, 651, 965, 987, 987, 791, 498)
+
+\begin{align*}
+    0: & \left(12\right) \\
+    1: & \left(101, 103, 121, 132\right) \\
+    2: & \left(\right) \\
+    3: & \left(322, 333, 342, 345, 350\right) \\
+    4: & \left(431, 432, 498\right) \\
+    5: & \left(532, 543\right) \\
+    6: & \left(641, 643, 651\right) \\
+    7: & \left(791\right) \\
+    8: & \left(\right) \\
+    9: & \left(910, 965, 987, 987\right)
+\end{align*}
+(12, 101, 103, 121, 132, 322, 333, 342, 345, 350, 431, 432, 498, 532, 543, 641, 643, 651, 791, 910, 965, 987, 987)
+
+\paragraph{Zadanie 7} (2pkt) Które z procedur sortujących:
+\begin{enumerate}
+    \item insertionSort (przez wstawianie),
+    \item quickSort (szybkie),
+    \item heapSort (przez kopcowanie),
+    \item mergeSort (przez złączanie),
+    \item countingSort (przez zliczanie)
+    \item radixSort (pozycyjne),
+    \item bucketSort (kubełkowe)
+\end{enumerate}
+są stabilne? W każdym przypadku uzasadnij stabilność lub znajdź konkretny przykład danych, dla których algorytm nie zachowa się stabilnie.
+
+\paragraph{Zadanie 8} Napisz funkcję void \verb+counting_sort(node* lista, int m);+ sortującą przez zliczanie listę linkowaną liczb całkowitych nieujemnych mniejszych od $m$. Procedura nie powinna usuwać ani tworzyć nowych węzłów, tylko sprytnie zmieniać pola next wykorzystując tylko $O(m)$ dodatkowej pamięci na wskaźniki.
+
+\paragraph{Zadanie 9} (algorytm Hoare'a) Korzystając funkcji \verb+int partition(int t[], int n)+ znanej z algorytmu sortowania szybkiego napisz funkcję \verb+int kty(int t[], int n)+, której wynikiem będzie $k$-ty co do wielkości element początkowo nieposortowanej tablicy \verb+t+. Średnia złożoność Twojego algorytmu powinna wynieść $O(n)$.
+
+
+\end{document}

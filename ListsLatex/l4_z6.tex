@@ -1,0 +1,123 @@
+\documentclass[18pt]{extarticle}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage[edges]{forest}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{tgbonum}
+\usepackage{xcolor}
+
+\begin{document}
+\large
+\fontfamily{cmss}\selectfont
+
+\title{Algorytmy i struktury danych (Lista 4)}
+\date{}
+\maketitle
+
+\paragraph{Zadanie 6}
+\text{Rysunki przedstawiają kopce tuż po wywołaniu funkcji \texttt{przesiej}}
+\begin{multicols*}{2}
+    \begin{center}
+        wejściowa:\\
+        {5 3 17 10 \textcolor{red}{84} 19 6 22 9 14 3}\\[12ex]
+        wyjściowa:\\
+        {5 3 17 10 84 19 6 22 9 14 3}\\[1ex]
+
+        wejściowa:\\
+        {5 3 17 \textcolor{red}{10} 84 19 6 22 9 14 3}\\[12ex]
+        wyjściowa:\\
+        {5 3 17 22 84 19 6 10 9 14 3}\\[1ex]
+
+        wejściowa:\\
+        {5 3 \textcolor{red}{17} 10 84 19 6 22 9 14 3}\\[12ex]
+        wyjściowa:\\
+        {5 3 19 22 84 17 6 10 9 14 3}\\[1ex]
+
+        wejściowa:\\
+        {5 \textcolor{red}{3} 19 10 84 17 6 22 9 14 3}\\[12ex]
+        wyjściowa:\\
+        {5 84 19 22 3 17 6 10 9 14 3}\\[1ex]
+
+    \columnbreak
+        \begin{forest}
+            for tree={circle, draw, minimum size=3ex, inner sep=1pt, s sep=7mm, anchor=south, fill=blue!30}
+            [5[3[10[22][9]][84,fill=red!50[14][3]]][17[19][6]]]
+        \end{forest}
+
+        \begin{forest}
+            for tree={circle, draw, minimum size=3ex, inner sep=1pt, s sep=7mm, anchor=south, fill=blue!30}
+            [5[3[10,fill=red!50[22][9]][84[14][3]]][17[19][6]]]
+        \end{forest}
+
+        \begin{forest}
+            for tree={circle, draw, minimum size=3ex, inner sep=1pt, s sep=7mm, anchor=south, fill=blue!30}
+            [5[3[22[10][9]][84[14][3]]][17,fill=red!50[19][6]]]
+        \end{forest}
+
+        \begin{forest}
+            for tree={circle, draw, minimum size=3ex, inner sep=1pt, s sep=7mm, anchor=south, fill=blue!30}
+            [5[3,fill=red!50[22[10][9]][84[14][3]]][19[17][6]]]
+        \end{forest}
+    \end{center}
+\end{multicols*}
+\pagebreak
+\begin{multicols*}{2}
+    \begin{center}
+        wejściowa:\\
+        {5 84 19 22 \textcolor{red}{3} 17 6 10 9 14 3}\\[12ex]
+        wyjściowa:\\
+        {5 84 19 22 14 17 6 10 9 3 3}\\[1ex]
+
+        wejściowa:\\
+        {\textcolor{red}{5} 84 19 22 14 17 6 10 9 3 3}\\[11ex]
+        wyjściowa:\\
+        {84 5 19 22 14 17 6 10 9 3 3}\\[1ex]
+
+        wejściowa:\\
+        {84 \textcolor{red}{5} 19 22 14 17 6 10 9 3 3}\\[11ex]
+        wyjściowa:\\
+        {84 22 19 5 14 17 6 10 9 3 3}\\[1ex]
+
+        wejściowa:\\
+        {84 \textcolor{red}{5} 19 22 14 17 6 10 9 3 3}\\[11ex]
+        wyjściowa:\\
+        {84 22 19 10 14 17 6 5 9 3 3}\\[1ex]
+
+        ostateczny kopiec po skończeniu powyższego wywołania \texttt{przesiej}
+    
+        \columnbreak
+        \begin{forest}
+            for tree={circle, draw, minimum size=3ex, inner sep=1pt, s sep=7mm, anchor=south, fill=blue!30}
+            [5[84[22[10][9]][3,fill=red!50[14][3]]][19[17][6]]]
+        \end{forest}
+
+        \begin{forest}
+            for tree={circle, draw, minimum size=3ex, inner sep=1pt, s sep=7mm, anchor=south, fill=blue!30}
+            [5,fill=red!50[84[22[10][9]][14[3][3]]][19[17][6]]]
+        \end{forest}
+
+        \begin{forest}
+            for tree={circle, draw, minimum size=3ex, inner sep=1pt, s sep=7mm, anchor=south, fill=blue!30}
+            [84[5,fill=red!50[22[10][9]][14[3][3]]][19[17][6]]]
+        \end{forest}
+
+        \begin{forest}
+            for tree={circle, draw, minimum size=3ex, inner sep=1pt, s sep=7mm, anchor=south, fill=blue!30}
+            [84[22[5,fill=red!50[10][9]][14[3][3]]][19[17][6]]]
+        \end{forest}
+
+        \begin{forest}
+            for tree={circle, draw, minimum size=3ex, inner sep=1pt, s sep=7mm, anchor=south, fill=blue!30}
+            [84[22[10[5][9]][14[3][3]]][19[17][6]]]
+        \end{forest}
+
+    \end{center}
+\end{multicols*}
+\end{document}
