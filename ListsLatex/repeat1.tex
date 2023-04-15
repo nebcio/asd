@@ -47,7 +47,8 @@ Przy jednym wywołaniu partition wykona się maksymalnie $n-1$ porównań. To pr
 
 Średnia złożoność czasowa: $O(nlogn)$ \\
 Pesymistyczna złożoność czasowa: $O(n^2)$ \\
-Pesymistyczną złożoność osiągamy, gdy 
+Pesymistyczną złożoność osiągamy, gdy jako pivot zostanie wybrana wartość najmniejsza lub największa w tablicy. Złożoność kwadratowa wynika ze wzoru \\
+$T(n) = n - 1 + T(n-1) -> T(n)=\frac{n(n-1)}{2}$
 
 \paragraph{Zadanie 6} Jaka jest złożoność funkcji buildheap? Przeprowadź dowód - uzasadnij swoją odpowiedź.
 
