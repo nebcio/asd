@@ -90,20 +90,27 @@ Mnożenie przez dwa wynika z sytuacji gdy porównujemy oboje dzieci z rodzicem.
     \frac{n}{2} \cdot \frac{2}{1-\frac{1}{2}} = \frac{n}{2} \cdot 4 = 2n = O(n)
 \end{gather*}
 
-\paragraph{Zadanie 7} Ile dodatkowej pamięci wymaga posortowanie tablicy n-elementowej za pomocą algorytmu: \\
+\paragraph{Zadanie 7} Ile dodatkowej pamięci wymaga posortowanie tablicy n-elementowej za pomocą algorytmu:
 \begin{enumerate}[label=\alph*.]
-    \item mergesort, złożoność pamięciowa 
-    \item quicksort
+    \item mergesort, złożoność pamięciowa O(n)
+            dodatkowa pamięć O(n)
+    \item quicksort, złożoność pamięciowa O(n)
+            dodatkowa pamięć O(n)
     \item heapsort, złożoność pamięciowa O(n)\\
             nie potrzebujemy dodatkowej pamięci -> O(1), ponieważ sortujemy w miejscu
-    \item insertionsort
-    \item countingsort
-    \item bucketsort
-    \item radixsort
+    \item insertionsort, złożoność pamięciowa O(n)\\
+            dodatkowa pamięć O(1)
+    \item countingsort, złożoność pamięciowa O(n)\\
+            dodatkowa pamięć O(n)
+    \item bucketsort, złożoność pamięciowa O(n)\\
+            dodatkowa pamięć O(n + m)
+    \item radixsort, złożoność pamięciowa O(n)\\
+            dodatkowa pamięć O(n + k)\\
+
     W punktach (e), (f), (g) zakładamy, że ilość kubełków jest m, a liczby do posortowania mają nie więcej niż k cyfr.
 \end{enumerate}
 
-\paragraph{Zadanie 8} Jaka jest średnia a jaka pesymistyczna złożoność czasowa algorytmu: \\
+\paragraph{Zadanie 8} Jaka jest średnia a jaka pesymistyczna złożoność czasowa algorytmu:
 \begin{enumerate}[label=\alph*]
     \item mergesort
     \item quicksort
@@ -118,11 +125,27 @@ Mnożenie przez dwa wynika z sytuacji gdy porównujemy oboje dzieci z rodzicem.
 \paragraph{Zadanie 9} Udowodnij, że wysokość (ilość poziomów na których występują węzły) kopca n-elementowego wynosi $\lfloor log_2 n \rfloor + 1$ \\
 
 
-\paragraph{Zadanie 10}
+\paragraph{Zadanie 10} Który element tablicy t jest (a) lewym dzieckiem (b) prawym dzieckim (c) ojcem, elementu t[i] w procedurze heapsort?
 
 
 \paragraph{Zadanie 11} Czy ciąg {\textcolor{green}{23}, \textcolor{green}{17}, 14, \textcolor{green}{6}, 13, 10, 1, \textcolor{green}{5}, \textcolor{red}{7}, 12} jest kopcem? \\
 
 Nie jest to kopiec ze względu na to że 7 jest większa od swojego rodzica, którym jest 6. \\ 
+
+\paragraph{Zadanie 12} Zilustruj działanie procedury buildheap dla ciągu {5,3,17,10,84,19,6,22,9}. Narysuj na kartce wygląd tablicy/kopca po każdym wywołaniu procedury przesiej.
+
+\paragraph{Zadanie 13} Zasymuluj działanie polifazowego mergesorta dla tablicy {9,22,6,19,14,10,17,3,5}. Na każdym etapie sortowania scala się sąsiadujące listy rosnące.
+
+\paragraph{Zadanie 14} Zasymuluj działanie mergesort(t2)
+
+\paragraph{Zadanie 15} Zasymuluj działanie partition(t2,7).
+
+\paragraph{Zadanie 16} Zasymuluj działanie partition(t2,7) w przypadku gdyby piwotem zamiast t[n/2] było t[0]
+
+\paragraph{Zadanie 17} Patrz 5.
+
+\paragraph{Zadanie 18} Napisz wzór na numer kubełka, do którego należy wrzucić liczbę x w sortowaniu kubełkowym, jeśli kubełków jest n, a elementy tablicy mieszczą się przedziale (a, b). Numeracja zaczyna się od 0
+
+\paragraph{Zadanie 19} Jak obliczyć k-tą od końca cyfrę w liczby x? Jak obliczyć ilość cyfr liczby x? Przyjmujemy układ dziesiętny. Jak wyniki zmienią się w układzie pozycyjnym o 1000 cyfr?
 
 \end{document}
