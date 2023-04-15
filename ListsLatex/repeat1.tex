@@ -66,15 +66,36 @@ czyli możemy posłużyć się sumą ciągu arytmetycznego.\\
 
 $T(n)=O(n^2)$
 
-\paragraph{Zadanie 6} Jaka jest złożoność funkcji buildheap? Przeprowadź dowód - uzasadnij swoją odpowiedź.
+\paragraph{Zadanie 6} Jaka jest złożoność funkcji buildheap? Przeprowadź dowód - uzasadnij swoją odpowiedź. \\
 
+Złożoność buildheap wynosi $O(n)$.\\
 
+Jeśli tablica ma n elementów to $\frac{n}{2}$ elementów jest liśćmi. Do porównań potrzebujemy węzła z dziećmi, więc ich nie mamy z czym porównywać. Pozosłe węzły możemy porównywać z dziećmi, a przy przesiewaniu z dalszymi potomkami. Stąd: \\
+
+$2(\frac{n}{2} \cdot 0 + \frac{n}{4} \cdot 1 + \frac{n}{8} \cdot 2 + ...)$ \\
+
+Mnożenie przez dwa wynika z sytuacji gdy porównujemy oboje dzieci z rodzicem.
+
+\begin{align*}
+    2 \sum_{i=1}^{h-1} \frac{n}{2^{i+1}} \cdot i                                                 &                                               \\
+    2 (\frac{n}{4} \cdot 1 + \frac{n}{8} \cdot 2 + \frac{n}{16} \cdot 3 + \frac{n}{32} \cdot 4 + & \dots)                                        \\
+    \frac{n}{2} (\frac{1}{1} + \frac{2}{2} + \frac{3}{4} + \frac{4}{8} +                         & \dots)                                        \\
+    \frac{1}{1} +  \frac{1}{2} +  \frac{1}{4} +  \frac{1}{8} +                                   & \dots = \frac{\frac{1}{1}}{1-\frac{1}{2}} = 2 \\
+    \frac{1}{2} +  \frac{1}{4} +  \frac{1}{8} +                                                  & \dots = 1                                     \\
+    \frac{1}{4} +  \frac{1}{8} +                                                                 & \dots = 0.5                                   \\
+    \frac{1}{8} +                                                                                & \dots = 0.25                                  \\
+                                                                                                 & \dots
+\end{align*}
+\begin{gather*}
+    \frac{n}{2} \cdot \frac{2}{1-\frac{1}{2}} = \frac{n}{2} \cdot 4 = 2n = O(n)
+\end{gather*}
 
 \paragraph{Zadanie 7} Ile dodatkowej pamięci wymaga posortowanie tablicy n-elementowej za pomocą algorytmu: \\
 \begin{enumerate}[label=\alph*.]
-    \item mergesort
+    \item mergesort, złożoność pamięciowa 
     \item quicksort
-    \item heapsort
+    \item heapsort, złożoność pamięciowa O(n)\\
+            nie potrzebujemy dodatkowej pamięci -> O(1), ponieważ sortujemy w miejscu
     \item insertionsort
     \item countingsort
     \item bucketsort
