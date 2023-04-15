@@ -34,12 +34,20 @@ Dla t1 wykona 6 porównań. Dla t2 wykona 21 porównań.
 \paragraph{Zadanie 3} Jaka jest pesymistyczna złożoność czasowa procedury mergeSort? Odpowiedź uzasadnij. \\
 
 
+Dla wersji rekurencyjnej i iteracyjnej: $O(nlogn)$ 
+Porównujemy elementy i scalamy je w jedną tablicę. W każdym kroku wykonujemy $n$ porównań. W każdym kroku dzielimy tablicę na dwie części o połowie długości. W sumie wykonujemy $logn$ kroków. Złożoność czasowa zawsze jest $O(nlogn)$.
+
 \paragraph{Zadanie 4} Ile co najwyżej porównań (między elementami tablicy) wykona procedura partition? \\
 
 
-Przy jednym wywołaniu partition wykona się maksymalnie $n-1$ porównań. To przypadek, gdy nasze odwrócone elementy są najbliżej pivota i musimy każdą wartość po stronie prawej i lewej porównać z pivotem.
+Przy jednym wywołaniu partition wykona się maksymalnie $n-1$ porównań. To przypadek, gdy nasze odwrócone elementy są najbliżej pivota lub musimy zamienić stronami każdy z elementó. W obu przypadkach musimy każdą wartość po stronie prawej i lewej porównać z pivotem.
 
-\paragraph{Zadanie 5} Jak jest średnia a jaka pesymistyczna złożoność quickSort. Odpowiedź uzasadnij.
+\paragraph{Zadanie 5} Jak jest średnia a jaka pesymistyczna złożoność quickSort. Odpowiedź uzasadnij. \\
+
+
+Średnia złożoność czasowa: $O(nlogn)$ \\
+Pesymistyczna złożoność czasowa: $O(n^2)$ \\
+Pesymistyczną złożoność osiągamy, gdy 
 
 \paragraph{Zadanie 6} Jaka jest złożoność funkcji buildheap? Przeprowadź dowód - uzasadnij swoją odpowiedź.
 
