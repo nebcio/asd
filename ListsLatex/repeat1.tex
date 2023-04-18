@@ -31,7 +31,7 @@ Dla t1 wykona 6 porównań. Dla t2 wykona 21 porównań.
 \paragraph{Zadanie 2} Ile co najwyżej porównań (między elementami tablic) wykona procedura scalająca merge dwie tablice n-elementowe? \\
 
 
-W najgorszym przypadku będzie musiała wykonać $2n - 1$ porównań, gdzie lementy rosnące wystepują naprzemiennie, więc będziemy porównywać każdy element do momentu aż nie trafimy na większy i go nie wpiszemy do tablicy wyjściowej.
+W najgorszym przypadku będzie musiała wykonać $2n - 1$ porównań, gdzie elementy rosnące wystepują naprzemiennie, więc będziemy porównywać każdy element do momentu aż nie trafimy na większy i go nie wpiszemy do tablicy wyjściowej.
 
 \paragraph{Zadanie 3} Jaka jest pesymistyczna złożoność czasowa procedury mergeSort? Odpowiedź uzasadnij. \\
 
@@ -91,48 +91,40 @@ Mnożenie przez dwa wynika z sytuacji gdy porównujemy oboje dzieci z rodzicem.
 \end{gather*}
 
 \paragraph{Zadanie 7} Ile dodatkowej pamięci wymaga posortowanie tablicy n-elementowej za pomocą algorytmu:
-\begin{enumerate}[label=\alph*.]
-    \item mergesort, złożoność pamięciowa O(n)
-            dodatkowa pamięć O(n)
-    \item quicksort, złożoność pamięciowa O(n)
-            dodatkowa pamięć O(n)
-    \item heapsort, złożoność pamięciowa O(n)\\
-            nie potrzebujemy dodatkowej pamięci -> O(1), ponieważ sortujemy w miejscu
-    \item insertionsort, złożoność pamięciowa O(n)\\
-            dodatkowa pamięć O(1)
-    \item countingsort, złożoność pamięciowa O(n)\\
-            dodatkowa pamięć O(n)
-    \item bucketsort, złożoność pamięciowa O(n)\\
-            dodatkowa pamięć O(n + m)
-    \item radixsort, złożoność pamięciowa O(n)\\
-            dodatkowa pamięć O(n + k)\\
+radixsort dodatkowa pamięć O(n + k)\\
 
     W punktach (e), (f), (g) zakładamy, że ilość kubełków jest m, a liczby do posortowania mają nie więcej niż k cyfr.
-\end{enumerate}
+\begin{center}
+    \begin{tabular}{c c}
+        \textbf{Algorytm}    & \textbf{Pamięć} \\
+        \hline
+        \verb+mergesort+     & $O(n)$          \\
+        \verb+quicksort+     & $O(n)$          \\
+        \verb+heapsort+      & $O(1)$          \\
+        \verb+insertionsort+ & $O(1)$          \\
+        \verb+countingsort+  & $O(n+m)$        \\
+        \verb+bucketsort+    & $O(n+m)$        \\
+        \verb+radixsort+     & $O(n+k)$
+    \end{tabular}
+\end{center}
 
 \paragraph{Zadanie 8} Jaka jest średnia a jaka pesymistyczna złożoność czasowa algorytmu:
-\begin{enumerate}[label=\alph*]
-    \item mergesort nlog n
-    \item quicksort nlog n
-    \item heapsort nlog n  $n^2$
-    \item insertionsort $n^2 n^2$
-    \item countingsort n + k n + k
-    \item bucketsort n + m n + m
-    \item radixsort nk nk
-    W punktach (e), (f), (g) zakładamy, że ilość kubełków jest m, a liczby do posortowania mają nie więcej niż k cyfr.
-\end{enumerate}
+\begin{center}
+    \begin{tabular}{c c c}
+        \textbf{Algorytm}    & \textbf{Średnia} & \textbf{Pesymistyczna} \\
+        \hline
+        \verb+mergesort+     & $O(n \log n)$    & $O(n \log n)$          \\
+        \verb+quicksort+     & $O(n \log n)$    & $O(n^2)$               \\
+        \verb+heapsort+      & $O(n \log n)$    & $O(n \log n)$          \\
+        \verb+insertionsort+ & $O(n^2)$         & $O(n^2)$               \\
+        \verb+countingsort+  & $O(n+m)$         & $O(n+m)$               \\
+        \verb+bucketsort+    & $O(n+m)$         & $O(n^2)$               \\
+        \verb+radixsort+     & $O(nk)$         & $O(nk)$
+    \end{tabular}
+\end{center}
 
 \paragraph{Zadanie 9} Udowodnij, że wysokość (ilość poziomów na których występują węzły) kopca n-elementowego wynosi $\lfloor log_2 n \rfloor + 1$ \\
 
-\begin{center}
-    \begin{forest}
-        for tree={circle, draw, minimum size=3ex, inner sep=1pt, s sep=7mm, anchor=south, fill=green!50}
-        [7[6[4][3]][5[2][1]]]
-    \end{forest} \\
-    i = ostatnie dziecko z dziećmi = $n/2-1$ \\
-    $i = 0$\\
-    $2(2(2 * 0+1)+1)+1... < n$
-\end{center}
 \begin{gather*}
     \text{Maksymalna ilość węzłów w kopcu o wysokości $h$:} \\
     n(h) = 2^h - 1 \\
@@ -206,8 +198,20 @@ Nie jest to kopiec ze względu na to że 7 jest większa od swojego rodzica, kt�
 
 \paragraph{Zadanie 17} Patrz 5.
 
-\paragraph{Zadanie 18} Napisz wzór na numer kubełka, do którego należy wrzucić liczbę x w sortowaniu kubełkowym, jeśli kubełków jest n, a elementy tablicy mieszczą się przedziale (a, b). Numeracja zaczyna się od 0
+\paragraph{Zadanie 18} Napisz wzór na numer kubełka, do którego należy wrzucić liczbę x w sortowaniu kubełkowym, jeśli kubełków jest n, a elementy tablicy mieszczą się przedziale (a, b). Numeracja zaczyna się od 0.\\
+
+
+\begin{align*}
+    \text{Kubełek }k = \lfloor\frac{n}{b-a} (x-a)\rfloor
+\end{align*}
 
 \paragraph{Zadanie 19} Jak obliczyć k-tą od końca cyfrę w liczby x? Jak obliczyć ilość cyfr liczby x? Przyjmujemy układ dziesiętny. Jak wyniki zmienią się w układzie pozycyjnym o 1000 cyfr?
+
+\begin{gather*}
+    \text{m różnych cyfr:} \\
+    k_w = \left \lfloor \frac{x}{m^k} \right \rfloor \mod m \\ \\
+    \text{dla }x = 123456, k = 3, m = 1000, k_w = 3 \\
+    \frac{123456}{1000^3} = 0.123456 \rightarrow 0 \mod 1000 = 0 \\ \\
+\end{gather*}
 
 \end{document}
