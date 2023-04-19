@@ -120,13 +120,13 @@ Dane, które są rozłożone mocno nierównomiernie np. grupują się w jeden ku
 
 \paragraph{Zadanie 7} (2pkt) Które z procedur sortujących:
 \begin{enumerate}
-    \item insertionSort (przez wstawianie),
-    \item quickSort (szybkie),
-    \item heapSort (przez kopcowanie),
-    \item mergeSort (przez złączanie),
-    \item countingSort (przez zliczanie)
-    \item radixSort (pozycyjne),
-    \item bucketSort (kubełkowe)
+    \item insertionSort - stabilny, zachowuje kolejność bo przestawia elementy od lewej do prawej strony nie zmieniającą tych o tej samej wartości
+    \item quickSort - niestabilny, [2, 1, 1] 1 z ostatniego indeksu zostanie zamieniona z 2 z 0 indeksu, potem gdy weźmiemy [1,2] to nie będzie już swapa 
+    \item heapSort - niestabilny, [1,1] budowanie kopca nic nie zmieniło, ale na etapie końcowym zamieni nam 1 miejscami i wywoła przesiewanie, które isę przerwie i nic nie zmieni ;')
+    \item mergeSort - stabilny, ponieważ przy łączeniu dwóch posortowanych tablic zachowuje kolejność elementów o tej samej wartości
+    \item countingSort - stabilny, ponieważ na końcowym etapie idąc od końca tablicy wejściowej wpisujemy elementy na odpowiednie ideksy przez co jeśli dana liczba była później od innej to tak pozostanie (gdy mają te same wartości)
+    \item radixSort - stabilny, ponieważ wykorzystuje się kolejki FIFO (first in first out)
+    \item bucketSort - stabilny, idziemy od końca i do bufora wpisujemy od ostatniegi indeksu gdzie elementy z danego kubełku powinny być w tablicy wyjściowej
 \end{enumerate}
 są stabilne? W każdym przypadku uzasadnij stabilność lub znajdź konkretny przykład danych, dla których algorytm nie zachowa się stabilnie.
 
