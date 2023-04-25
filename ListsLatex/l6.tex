@@ -55,9 +55,109 @@ end
 - wstaw do niego 10.
 - usuń z wyjściowego drzewa 1
 
-
+\pagebreak
 \paragraph{Zadanie 6} (3 pkt.) Do pustego drzewa czerwono-czarnego wstaw kolejno 20 przypadkowych kluczy. Następnie usuń je w tej samej kolejności w jakiej wstawiałeś. Przypadkowymi kluczami są kolejne litery Twojego nazwiska, imienia i adresu. Zadanie wykonujemy na kartce (lub w pliku) i oddajemy prowadzącemu. Zadanie jest obowiązkowe
 
+\begin{center}
+    \textbf{Wstawianie} \\[1em]
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        [Z[, phantom][, phantom]]
+        [Z[U, fill=red][, phantom]]
+        [Z[U, fill=red][Z, fill=red]]
+        [Z[U, fill=red[A, fill=red][, phantom]][Z, fill=red]]
+        [Z, fill=red[U[A, fill=red][, phantom]][Z]]
+        [Z[U[A, fill=red][, phantom]][Z]]
+        [Z[U[A, fill=red[, phantom][N, fill=red]][, phantom]][Z]]
+        [Z[U[N, fill=red[A, fill=red][, phantom]][, phantom]][Z]]
+        [Z[N[A, fill=red][U]][Z]]
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        [Z[N[A, fill=red][U, fill=red]][Z]]
+        [Z[N[A, fill=red][U, fill=red[N, fill=red][, phantom]]][Z]]
+        [Z[N, fill=red[A][U[N, fill=red][, phantom]]][Z]]
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        ]
+    \end{forest}
+\end{center}
+
+\pagebreak
+\begin{center}
+    \textbf{Usuwanie} \\[1em]
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        ]
+    \end{forest}
+\end{center}
 
 \paragraph{Zadanie 7} Analizując kod programu RBT.h udowodnij, że w trakcie wstawiania do drzewa czerwono-czarnego wykonają się co najwyżej dwie rotacje. Czy tak samo jest w przypadku usuwania
 
