@@ -1,0 +1,68 @@
+\documentclass[18pt]{extarticle}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.9cm]{geometry}
+\usepackage[edges]{forest}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{tgbonum}
+\usepackage{xcolor}
+
+\begin{document}
+\large
+\fontfamily{cmss}\selectfont
+
+\title{Algorytmy i struktury danych (Lista 6)}
+\date{}
+\maketitle
+
+% \paragraph{quick sort, selekcja, sortowanie bez porównań}
+\paragraph{Zadanie 1} Jakie informacje przechowujemy w węźle drzewa czerwono-czarnego? Zadeklaruj strukturę RBTnode tak, by dziedziczyła z BSTnode. Podaj definicję drzewa czerwono czarnego. \\
+
+
+Oprócz lewego/prawego dziecka kolor węzła (czerwony lub czarny). 
+Logika/definicja: drzewo czerwono-czarne jest drzewem BST, w którym każdy węzeł ma dodatkowo kolor (czerwony lub czarny). Węzły czerwone mają 2 czarnych dzieci. Korzeń jest czarny. Każda ścieżka od korzenia do liścia ma tę samą liczbę czarnych węzłów. Każdy liść jest czarny (wartownik) a czerwony węzeł nie może mieć czerwonego dziecka. \\
+
+\begin{lstlisting}
+struct BSTnode:
+    int key;	 
+    node *left;	 
+    node *right;
+end
+
+struct RBTnode : BSTnode:
+    bool color;	 
+end
+\end{lstlisting}
+
+\paragraph{Zadanie 2} (a) Jaka może być minimalna, a jaka maksymalna ilość kluczy w drzewie czerwono-czarnym o ustalonej czarnej wysokości równej hB?
+(b) Znajdź maksymalną i minimalną wartość stosunku ilości węzłów czerwonych do czarnych w drzewie czerwono-czarnym.
+
+\paragraph{Zadanie 3} Uzasadnij posługując się rysunkiem i opisem, że operacje wykonywane w trakcie wstawiania do drzewa czerwono-czarnego (rotacja i przekolorowanie) nie zmieniają ilości czarnych węzłów, na żadnej ścieżce od korzenia do liścia.
+
+\paragraph{Zadanie 4} (a) Narysuj poprawne drzewo czerwono czarne w którym na lewo od korzenia jest 1 węzeł a na prawo 7 węzłów.
+(b) Czy istnieje poprawne drzewo czerwono czarne, w którym na lewo od korzenia będzie 100 razy mniej węzłów niż na prawo od korzenia?
+
+\paragraph{Zadanie 5} W poniższym drzewie czerwono-czarnym (czarne węzły oznaczono nawiasem kwadratowym):
+[5]
+(3) [11]
+[1] [4] (9)
+- wstaw do niego 10.
+- usuń z wyjściowego drzewa 1
+
+
+\paragraph{Zadanie 6} (3 pkt.) Do pustego drzewa czerwono-czarnego wstaw kolejno 20 przypadkowych kluczy. Następnie usuń je w tej samej kolejności w jakiej wstawiałeś. Przypadkowymi kluczami są kolejne litery Twojego nazwiska, imienia i adresu. Zadanie wykonujemy na kartce (lub w pliku) i oddajemy prowadzącemu. Zadanie jest obowiązkowe
+
+
+\paragraph{Zadanie 7} Analizując kod programu RBT.h udowodnij, że w trakcie wstawiania do drzewa czerwono-czarnego wykonają się co najwyżej dwie rotacje. Czy tak samo jest w przypadku usuwania
+
+
+\paragraph{Zadanie 8} Uzasadnij, że rozmiar stosu (n = 100) przyjęty w procedurach insert i remove w pliku RBnpnr.h nigdy nie okaże się za mały
+
+
+\end{document}

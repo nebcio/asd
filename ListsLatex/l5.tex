@@ -24,30 +24,42 @@
 % \paragraph{quick sort, selekcja, sortowanie bez porównań}
 \paragraph{Zadanie 1} Udowodnij, że jeśli dla pewnego ustalonego q, takiego że 1/2 < q < 1, podczas sortowania szybkiego, procedura partition, na każdym poziomie rekurencji podzieli elementy tablicy w stosunku q : (1 - q) to algorytm wykona się w czasie O(n log n). Wskazówka: udowodnij, że głębokość rekurencji nie przekroczy - log n/ log q i zaniedbaj błędy zaokrągleń do wartości całkowitych.
 
-\begin{center}
-    \begin{forest}
-        for tree={math content, minimum size=3ex, inner sep=1pt, s sep=7mm, anchor=south}
-        [n[(1-q)n][qn[(1-q)qn][q^2n[(1-q)q^kn, edge=dashed][q^kn, edge=dashed]]]]
-    \end{forest}
-\end{center}
+\begin{multicols*}{3}
+\begin{forest}
+    for tree={math content, minimum size=3ex, inner sep=1pt, s sep=7mm, anchor=south}
+    [n[(1-q)n][qn[(1-q)qn][q^2n[(1-q)q^kn, edge=dashed][q^kn, edge=dashed]]]]
+\end{forest}
+
+\columnbreak
 \begin{gather*}
     q^kn = 1 \\
     q^k = \frac{1}{n} \\
-    \log q^k = \log n^{-1} \\
-    k \log q = -\log n \\
-    k = -\frac{\log n}{\log q}
+    \log_q q^k = \log_q n^{-1}
 \end{gather*}
 
-\paragraph{Zadanie 2} Ile porównań (zapisz wyniki w notacji O) wykona algorytm quicksort z procedurą partition w wersji Hoare’a, a ile w wersji z procedurę partition w wersji Lomuto dla danych: (a) posortowanych rosnąco, (b) posortowanych malejąco, (c) o identycznych kluczach?
+\columnbreak
+\begin{gather*}
+    k = -\log_q n = \\
+    = - \frac{\log_2 n}{\log_2 q} \\
+    \log_2 \frac{1}{2} < \log_2 q < \log_2 1 \\
+    -1 < \log_2 q < 0 \\
+    k = -\frac{\log n}{\log q}
+\end{gather*}
+\end{multicols*}
 
+\paragraph{Zadanie 2} Ile porównań (zapisz wyniki w notacji O) wykona algorytm quicksort z procedurą partition w wersji Hoare'a, a ile w wersji z procedurę partition w wersji Lomuto dla danych: (a) posortowanych rosnąco, (b) posortowanych malejąco, (c) o identycznych kluczach?
+\begin{multicols*}{3}
+Posortowane rosnąco: \\
+H = O(n log n), L = O($n^2$). \\
 
-Z procedurą Hoare dla  posortowanych rosnąco wykona się O(n log n) 
+\columnbreak
+Dla posortowanych malejąco: \\
+H = O(n log n), L = O($n^2$). \\
 
-porównań, a z procedurą Lomuto O(n**2). Dla posortowanych malejąco wykona się O(n**2) porównań, a z procedurą Lomuto O(n logn). 
-
-Dla danych o identycznych kluczach dla obu procedur wykona się O(n**2) porównań w wersji 
-%  wykona się O(n^2) porównań, a z procedurą Lomuto O(n log n).
-
+\columnbreak
+Dla identycznych kluczy: \\
+H = O($n^2$), L = O($n^2$) \\ 
+\end{multicols*}
 
 \paragraph{Zadanie 3} Napisz wzór na numer kubełka, do którego należy wrzucić liczbę x w sortowaniu kubełkowym, jeśli kubełków jest n, a elementy tablicy mieszczą się przedziale (a, b). Numeracja zaczyna się od 0. \\
 
