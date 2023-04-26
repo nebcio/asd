@@ -1,0 +1,175 @@
+\documentclass[18pt]{extarticle}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.9cm]{geometry}
+\usepackage[edges]{forest}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{tgbonum}
+\usepackage{xcolor}
+
+\begin{document}
+\large
+\fontfamily{cmss}\selectfont
+
+\title{Algorytmy i struktury danych (Lista 6)}
+\date{}
+\maketitle
+
+\paragraph{Zadanie 6} (3 pkt.) Do pustego drzewa czerwono-czarnego wstaw kolejno 20 przypadkowych kluczy. Następnie usuń je w tej samej kolejności w jakiej wstawiałeś. Przypadkowymi kluczami są kolejne litery Twojego nazwiska, imienia i adresu. Zadanie wykonujemy na kartce (lub w pliku) i oddajemy prowadzącemu. Zadanie jest obowiązkowe
+\begin{center}
+    \textbf{Usuwanie} \\[1em]
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        [N[A, fill=red[A[A][A]][K[I, fill=red[E[C, fill=red][, phantom]][I]][K]]][U[R, fill=red[N][Ś]][Z, fill=red[W][Z[, phantom][Z, fill=red]]]]]
+        [N[A, fill=red[A[A][A]][K[I, fill=red[E[C, fill=red][, phantom]][I]][K]]][U[R, fill=red[N][Ś]][W, fill=red[W][Z[, phantom][Z, fill=red]]]]]
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        [N[A, fill=red[A[A][A]][K[I, fill=red[E[C, fill=red][, phantom]][I]][K]]][Ś[R, fill=red[N][,phantom]][W, fill=red[W][Z[, phantom][Z, fill=red]]]]]
+        [N[A, fill=red[A[A][A]][K[I, fill=red[E[C, fill=red][, phantom]][I]][K]]][Ś[R[N, fill=red][,phantom]][W, fill=red[W][Z[, phantom][Z, fill=red]]]]]
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        [N[A, fill=red[A[A][A]][K[I, fill=red[E[C, fill=red][, phantom]][I]][K]]][Ś[R[N, fill=red][,phantom]][W, fill=red[W][Z]]]]
+        [N[A, fill=red[A[A][,phantom]][K[I, fill=red[E[C, fill=red][, phantom]][I]][K]]][Ś[R[N, fill=red][,phantom]][W, fill=red[W][Z]]]]
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        [N[A, fill=red[A[A, fill=red][, phantom]][I, fill=red[E[C, fill=red][, phantom]][,phantom][K[I][K]]]][Ś[R[N, fill=red][,phantom]][W, fill=red[W][Z]]]]
+        [N[A, fill=red[A[A, fill=red][, phantom]][I[E[C, fill=red][, phantom]][,phantom][K, fill=red[I][K]]]][Ś[R[N, fill=red][,phantom]][W, fill=red[W][Z]]]]
+        ]
+    \end{forest}
+\end{center}
+
+\pagebreak
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        [N[I[A, fill=red[A[A, fill=red][, phantom]][E[C, fill=red][, phantom]]][K, fill=red[I][K]]][Ś[R[N, fill=red][,phantom]][W, fill=red[W][Z]]]]
+        [N[I, fill=red[A[A[A, fill=red][, phantom]][E[C, fill=red][, phantom]]][K[I][K]]][Ś[R[N, fill=red][,phantom]][W, fill=red[W][Z]]]]
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        [K[I, fill=red[A[A[A, fill=red][, phantom]][E[C, fill=red][, phantom]]][K[I][, phantom]]][Ś[R[N, fill=red][,phantom]][W, fill=red[W][Z]]]]
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        [K[I[A, fill=red[A[A, fill=red][, phantom]][E[C, fill=red][, phantom]]][K[I, fill=red][, phantom]]][Ś[R[N, fill=red][,phantom]][W, fill=red[W][Z]]]]
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        [K[I[A, fill=red[A[A, fill=red][, phantom]][E[C, fill=red][, phantom]]][K[I, fill=red][, phantom]]][Ś[R][W, fill=red[W][Z]]]]
+        [K[I[A, fill=red[A][E[C, fill=red][, phantom]]][K[I, fill=red][, phantom]]][Ś[R][W, fill=red[W][Z]]]]
+        ]
+    \end{forest}
+\end{center}
+
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        [K[I[A, fill=red[A][E[C, fill=red][, phantom]]][I, fill=red]][Ś[R][W, fill=red[W][Z]]]]
+        [K[I[A, fill=red[A][E[C, fill=red][, phantom]]][I]][Ś[R][W, fill=red[W][Z]]]]
+        [K[I[A, fill=red[, phantom][E[C, fill=red][, phantom]]][I]][Ś[R][W, fill=red[W][Z]]]]
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        [K[I[A, fill=red[, phantom][C, fill=red[, phantom][E]]][I]][Ś[R][W, fill=red[W][Z]]]]
+        [K[I[A, fill=red[, phantom][C[, phantom][E, fill=red]]][I]][Ś[R][W, fill=red[W][Z]]]]
+        [K[I[C[A, fill=red][E, fill=red]][I]][Ś[R][W, fill=red[W][Z]]]]
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        [K[I[C, fill=red[A][E]][I]][Ś[R][W, fill=red[W][Z]]]]
+        [K[I[C, fill=red[A][E]][I]][Ś[, phantom][W, fill=red[W][Z]]]]
+        [K[I[C, fill=red[A][E]][I]][W, fill=red[Ś[,phantom][W]][Z]]]
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        [K[I[C, fill=red[A][E]][I]][W[Ś, fill=red[,phantom][W]][Z]]]
+        [K[I[C, fill=red[A][E]][I]][W[Ś[,phantom][W, fill=red]][Z]]]
+        [K[I[C, fill=red[, phantom][E]][I]][W[Ś[,phantom][W, fill=red]][Z]]]
+        [K[I[C[, phantom][E, fill=red]][I]][W[Ś[,phantom][W, fill=red]][Z]]]
+        ]
+    \end{forest}
+\end{center}
+
+\pagebreak
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        [K[I[C[, phantom][E, fill=red]][I]][W[Ś[,phantom][W, fill=red]][Z]]]
+        [K[I[C[, phantom][E, fill=red]][I]][W[W, fill=red][Z]]]
+        [K[I[C[, phantom][E, fill=red]][I]][W[W][Z]]]
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        [I[I[C[, phantom][E, fill=red]][, phantom]][W[W][Z]]]
+        [I[I[E, fill=red[C][,phantom]][,phantom]][W[W][Z]]]
+        [I[I[E[C, fill=red][,phantom]][,phantom]][W[W][Z]]]
+        [I[E[C, fill=red][I]][W[W][Z]]]
+        ]
+    \end{forest}
+\end{center}
+
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        [I[E[C][I]][W[W][Z]]]
+        [I[E[C][, phantom]][W[W][Z]]]
+        [I[E[C, fill=red][, phantom]][W, fill=red[W][Z]]]
+        [I[C[, phantom]][W, fill=red[, phantom][Z]]]
+        [I[C[, phantom]][W[, phantom][Z, fill=red]]]
+        ]
+    \end{forest}
+\end{center}
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        [C[, phantom][W[, phantom][Z, fill=red]]]
+        [W[C][Z, fill=red]]
+        [W[C][Z]]
+        [W[, phantom][Z]]
+        [W[, phantom][Z, fill=red]]
+        [W[, phantom][, phantom]]
+        [nullptr, fill=green[, phantom][, phantom]]
+        ]
+    \end{forest}
+\end{center}
+
+\end{document}

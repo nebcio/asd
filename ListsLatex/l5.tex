@@ -24,19 +24,17 @@
 % \paragraph{quick sort, selekcja, sortowanie bez porównań}
 \paragraph{Zadanie 1} Udowodnij, że jeśli dla pewnego ustalonego q, takiego że 1/2 < q < 1, podczas sortowania szybkiego, procedura partition, na każdym poziomie rekurencji podzieli elementy tablicy w stosunku q : (1 - q) to algorytm wykona się w czasie O(n log n). Wskazówka: udowodnij, że głębokość rekurencji nie przekroczy - log n/ log q i zaniedbaj błędy zaokrągleń do wartości całkowitych.
 
-\begin{multicols*}{3}
+\begin{multicols}{3}
 \begin{forest}
     for tree={math content, minimum size=3ex, inner sep=1pt, s sep=7mm, anchor=south}
     [n[(1-q)n][qn[(1-q)qn][q^2n[(1-q)q^kn, edge=dashed][q^kn, edge=dashed]]]]
 \end{forest}
-
 \columnbreak
 \begin{gather*}
     q^kn = 1 \\
     q^k = \frac{1}{n} \\
     \log_q q^k = \log_q n^{-1}
 \end{gather*}
-
 \columnbreak
 \begin{gather*}
     k = -\log_q n = \\
@@ -45,10 +43,10 @@
     -1 < \log_2 q < 0 \\
     k = -\frac{\log n}{\log q}
 \end{gather*}
-\end{multicols*}
+\end{multicols}
 
 \paragraph{Zadanie 2} Ile porównań (zapisz wyniki w notacji O) wykona algorytm quicksort z procedurą partition w wersji Hoare'a, a ile w wersji z procedurę partition w wersji Lomuto dla danych: (a) posortowanych rosnąco, (b) posortowanych malejąco, (c) o identycznych kluczach?
-\begin{multicols*}{3}
+\begin{multicols}{3}
 Posortowane rosnąco: \\
 H = O(n log n), L = O($n^2$). \\
 
@@ -59,7 +57,7 @@ H = O(n log n), L = O($n^2$). \\
 \columnbreak
 Dla identycznych kluczy: \\
 H = O($n^2$), L = O($n^2$) \\ 
-\end{multicols*}
+\end{multicols}
 
 \paragraph{Zadanie 3} Napisz wzór na numer kubełka, do którego należy wrzucić liczbę x w sortowaniu kubełkowym, jeśli kubełków jest n, a elementy tablicy mieszczą się przedziale (a, b). Numeracja zaczyna się od 0. \\
 
