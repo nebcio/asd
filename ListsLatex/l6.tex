@@ -46,7 +46,7 @@ end
 \paragraph{Zadanie 3} Uzasadnij posługując się rysunkiem i opisem, że operacje wykonywane w trakcie wstawiania do drzewa czerwono-czarnego (rotacja i przekolorowanie) nie zmieniają ilości czarnych węzłów, na żadnej ścieżce od korzenia do liścia. \\
 
 
-Przekolorowanie zwiększa liczbę czarnych węzłów dopiero gdy korzeń zastaje przekolorowany na czerwono (i w nastepnym kroku na czarno) \\
+Przekolorowanie zwiększa liczbę czarnych węzłów w drzewie dopiero gdy korzeń zastaje przekolorowany na czerwono (i w nastepnym kroku na czarno) \\
 \begin{center}
     \begin{forest}
         [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
@@ -56,17 +56,11 @@ Przekolorowanie zwiększa liczbę czarnych węzłów dopiero gdy korzeń zastaje
     \end{forest}
 \end{center}
 W przypadku rotacji, nawet jeśli chwilowo zmieni się liczba czarnych węzłów na gałęzi, to po wykonaniu drugiej rotacji liczba czarnych węzłów wróci do poprzedniej wartości lub naprawimy ją przekolorowaniem. \\
-Samo przekolorowywanie natomiast polega \\
 \begin{center}
     \begin{forest}
         [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
         [Z[U[A, fill=red[, phantom][N, fill=red]][, phantom]][Z]]
-        [Z[U[N, fill=red[A, fill=red][, phantom]][, phantom]][Z]]
-        [Z[N[A, fill=red][U]][Z]]
-        [Z[N[A, fill=red][U, fill=red]][Z]]
-        [Z[N[A, fill=red][U, fill=red[N, fill=red][, phantom]]][Z]]
-        [Z[N, fill=red[A][U[N, fill=red][, phantom]]][Z]]
-        [Z[N, fill=red[A[, phantom][A, fill=red]][U[N, fill=red][, phantom]]][Z]]
+        [Z[N[A, fill=red][U, fill=red]][, phantom][Z]]
         ]
     \end{forest}
 \end{center}
