@@ -23,7 +23,22 @@
 
 \paragraph{Zadanie 1} Jakie informacje przechowujemy w węźle B-drzewa? Podaj definicję B-drzewa. \\
 
-
+\begin{lstlisting}
+    struct BTnode:
+        int t;              // minimum degree
+        int n;              // current number of keys
+        int* keys;          // array of keys in non-decreasing order
+        bool leaf;          // is it a leaf?
+        BTnode** children;
+    end
+\end{lstlisting}
+Inne założenia (oprócz zawartych w komentarzach):
+\begin{enumerate}
+    \item Węzeł wewnętrzny zawiera $n+1$ wskaźników do synów.
+    \item Klucze rozdzielają dzieci na przedziały (n+1).
+    \item Każdy węzeł różny od korzenia musi mieć co najmniej $t-1$ kluczy i co najwyżej $2t-1$ kluczy. (korzeń może mieć od $1$ do $2t-1$ kluczy)
+    \item Wszystkie liście leżą na tej samej wysokości równym $h$.
+\end{enumerate}
 
 \paragraph{Zadanie 2} (2 pkt.) Udowodnij, że żadna z poniższych operacji wykonana na drzewie spełniającym wszystkie warunki B-drzewa, nie prowadzi do ich naruszenia.
 \begin{enumerate}[label=(\alph*)]
