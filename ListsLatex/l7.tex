@@ -1,0 +1,81 @@
+\documentclass[18pt]{extarticle}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.9cm]{geometry}
+\usepackage[edges]{forest}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{tgbonum}
+\usepackage{xcolor}
+
+\begin{document}
+\large
+\fontfamily{cmss}\selectfont
+
+\title{Algorytmy i struktury danych (Lista 6)}
+\date{}
+\maketitle
+
+\paragraph{Zadanie 1} Jakie informacje przechowujemy w węźle B-drzewa? Podaj definicję B-drzewa. \\
+
+
+
+\paragraph{Zadanie 2} (2 pkt.) Udowodnij, że żadna z poniższych operacji wykonana na drzewie spełniającym wszystkie warunki B-drzewa, nie prowadzi do ich naruszenia.
+\begin{enumerate}[label=(\alph*)]
+    \item \verb|split_child|, przesuwająca środkowy klucz (medianę) z węzła o $2t-1$ kluczach do rodzica, który ma
+          mniej niż $2t-1$ kluczy, a klucze i dzieci na prawo od mediany -- do nowego brata dodanego po prawej stronie dzielonego węzła.
+    \item \verb|unsplit_child| odwrotna do \verb|split_child|, sklejająca dwa sąsiednie węzły o minimalnej liczbie
+          kluczy $t-1$ oraz klucz stojący w rodzicu między nimi w jeden nowy węzeł. Zakładamy, że rodzic ma co
+          najmniej $t$ kluczy lub jest korzeniem.
+    \item \verb|borrow_from_sibling|, rotacja przenosząca do węzła o minimalnej $t-1$ liczbie kluczy, który ma
+          prawego brata z co najmniej $t$ kluczami, klucz stojący w rodzicu między braćmi i wpisująca na jego miejsce jego miejsce pierwszy klucz brata. Jakie operacje na dzieciach należy dodatkowo wykonać?
+\end{enumerate}
+
+\paragraph{Zadanie 3} W B-drzewie o $t=10$ podaj wzory i wyniki numeryczne określające:
+\begin{enumerate}[label=(\alph*)]
+    \item ile kluczy może zawierać korzeń (podaj przedział),
+    \item ile dzieci może mieć korzeń (podaj przedział),
+    \item ile kluczy może mieć potomek korzenia (podaj przedział),
+    \item ile dzieci może mieć potomek korzenia (podaj przedział),
+    \item ile maksymalnie węzłów może być na $k$-tym poziomie (przyjmując, że korzeń to poziom $0$)
+    \item ile łącznie kluczy może być na $k$-tym poziomie (podaj przedział).
+\end{enumerate}
+
+\paragraph{Zadanie 4} Jaka jest minimalna, a jaka maksymalna liczba kluczy w B-drzewie mającym $h$ poziomów, przy ustalonej wartości parametru $t$ (patrz Cormen).
+
+\paragraph{Zadanie 5} Podano na rysunku B-drzewo o $t=2$:
+\begin{center}
+    \begin{tikzpicture}
+        \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+        \tikzstyle{every node}=[bplus]
+        \tikzstyle{level 1}=[sibling distance=60mm]
+        \tikzstyle{level 2}=[sibling distance=15mm]
+        \node {9} [->]
+        child {node {7}
+                child {node {6}}
+                child {node {8}}
+            }
+        child {node {11 \nodepart{two} 14 \nodepart{three} 19}
+                child {node {10}}
+                child {node {12 \nodepart{two} 13}}
+                child[sibling distance=25mm] {node {15 \nodepart{two} 16 \nodepart{three} 17}}
+                child[sibling distance=20mm] {node {20}}
+            };
+        \end{tikzpicture}
+        \begin{enumerate}[label=-]
+            \item usuń z tego drzewa 7.
+            \item do drzewa widocznego powyżej dodaj 18.
+        \end{enumerate}
+\end{center}
+
+\paragraph{Zadanie 6} (2 pkt.) Do pustego B-drzewa o $t=2$ wstaw kolejno $22$ litery swojego imienia i nazwiska oraz adresu. Następnie usuń w tej samej kolejności w jakiej były wstawiane.
+
+\paragraph{Zadanie 7} Narysuj B-drzewo o $t=3$ zawierające dokładnie $17$ kluczy na trzech poziomach: korzeń, jego dzieci i wnuki. Następnie usuń z tego drzewa korzeń.
+
+
+\end{document}
