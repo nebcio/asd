@@ -53,15 +53,48 @@ Inne założenia (oprócz zawartych w komentarzach):
 
 \paragraph{Zadanie 3} W B-drzewie o $t=10$ podaj wzory i wyniki numeryczne określające:
 \begin{enumerate}[label=(\alph*)]
-    \item ile kluczy może zawierać korzeń (podaj przedział),
-    \item ile dzieci może mieć korzeń (podaj przedział),
-    \item ile kluczy może mieć potomek korzenia (podaj przedział),
-    \item ile dzieci może mieć potomek korzenia (podaj przedział),
-    \item ile maksymalnie węzłów może być na $k$-tym poziomie (przyjmując, że korzeń to poziom $0$)
-    \item ile łącznie kluczy może być na $k$-tym poziomie (podaj przedział).
+    \item ile kluczy może zawierać korzeń (podaj przedział), \\
+    Korzeń zawiera od 1 do 19 kluczy. (max $2t-1$)
+    \item ile dzieci może mieć korzeń (podaj przedział), \\
+    Korzeń może mieć od 2 do 20 dzieci. (min $t$ max $2t$)
+    \item ile kluczy może mieć potomek korzenia (podaj przedział), \\
+    Potomek korzenia może mieć od 9 do 19 kluczy. (min $t-1$ max $2t-1$)
+    \item ile dzieci może mieć potomek korzenia (podaj przedział), \\
+    Potomek korzenia może mieć od 10 do 20 dzieci. (min $t$ max $2t$)
+    \item ile maksymalnie węzłów może być na $k$-tym poziomie (przyjmując, że korzeń to poziom $0$) \\
+    Na k-tym poziomie może być maksymalnie $(2t)^k$ węzłów.
+    \item ile łącznie kluczy może być na $k$-tym poziomie (podaj przedział). \\
+    Nie licząc korzenia dla którego minimum to 1 klicz to na k-tym poziomie może być od $2(t-1)t^{k-1}$ do $(2t-1)(2t)^{k}$ kluczy. (min $(2min)t^{k-1}$ max $(max)t^{k}$
 \end{enumerate}
 
-\paragraph{Zadanie 4} Jaka jest minimalna, a jaka maksymalna liczba kluczy w B-drzewie mającym $h$ poziomów, przy ustalonej wartości parametru $t$ (patrz Cormen).
+\paragraph{Zadanie 4} Jaka jest minimalna, a jaka maksymalna liczba kluczy w B-drzewie mającym $h$ poziomów, przy ustalonej wartości parametru $t$ (patrz Cormen). \\
+
+Minimalna: \\
+Gdy korzeń zawiera 1 klucz, a na każdym z pozostałych poziomiomów każdy węzeł zawiera $t-1$ kluczy (minimum). \\
+Na poziomie 1 mamy 2 węzły -> $2(t-1)$ kluczy. \\
+Z czego wynika, że na kolejnym poziomie mamy 2t węzłów, na następnym $2t^2$ itd. \\
+W takim układzie na $h$ poziomie mamy $2t^{h-1}$ węzłów, a każdy z nich zawiera $t-1$ kluczy. \\
+Stąd: \\
+\begin{align*}
+    n &\geq 1 + 2(t-1)(2t + 2t^2 + ... + 2t^{h-1}) \\
+    &= 1 + (t-1)\sum_{i=1}^{h}2t^{i-1} \\
+    &= 1 + 2(t-1)\frac{t^h-1}{t-1} \\
+    &= 2t^h - 1
+\end{align*}
+
+Maksymalna: \\
+Gdy korzeń ma maksymalną ilość kluczy $2t-1$, a na każdym z pozostałych poziomów każdy węzeł zawiera $2t-1$ kluczy (maksimum). \\
+Na poziomie 1 mamy max $2t-1$ kluczy razy wezły 2t -> $(2t-1)2t$. \\
+Z czego wynika, że na kolejnym poziomie mamy $(2t-1)2t^2$ kluczy, na następnym $(2t-1)2t^3$ itd. \\
+W takim układzie na $h$ poziomie mamy $(2t-1)2t^{h}$ kluczy, a każdy z nich zawiera $2t-1$ kluczy. \\
+Stąd: \\
+\begin{align*}
+    n &\leq (2t-1) + (2t-1)(2t + {(2t)}^2 + ... + {(2t)}^{h}) \\
+    &= (2t-1) + (2t-1)\sum_{i=1}^{h}{(2t)}^{i} \\
+    &= (2t-1)\sum_{i=0}^{h}{(2t)}^{i} \\
+    &= (2t-1)\frac{{(2t)}^{h+1}-1}{2t-1} \\
+    &= {(2t)}^{h+1}-1
+\end{align*}
 
 \paragraph{Zadanie 5} Podano na rysunku B-drzewo o $t=2$:
 \begin{center}
