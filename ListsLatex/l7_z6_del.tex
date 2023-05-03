@@ -1,0 +1,367 @@
+\documentclass[18pt]{extarticle}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.9cm]{geometry}
+\usepackage[edges]{forest}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{tgbonum}
+\usepackage{xcolor}
+
+\begin{document}
+\large
+\fontfamily{cmss}\selectfont
+
+\title{Algorytmy i struktury danych (Lista 6)}
+\date{}
+\maketitle
+
+\paragraph{Zadanie 6} (2 pkt.) Do pustego B-drzewa o $t=2$ wstaw kolejno $22$ litery swojego imienia i nazwiska oraz adresu. Następnie usuń w tej samej kolejności w jakiej były wstawiane.
+\\
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=100mm]
+    \tikzstyle{level 2}=[sibling distance=50mm]
+    \tikzstyle{level 3}=[sibling distance=20mm]
+    \node{N} [->]
+        child {node {A}
+            child {node {A}
+                child {node {A}}
+                child {node {A}}
+            }
+            child {node {E \nodepart{two} K}
+                child {node {C \nodepart{two} E}}
+                child {node {I \nodepart{two} I}}
+                child {node {K}}
+            }
+        }
+        child {node {U}
+            child {node {R}
+                child {node {N \nodepart{two} O}}
+                child {node {R \nodepart{two} Ś}}
+            }
+            child {node {Z}
+                child {node {W \nodepart{three} W}}
+                child {node {Z \nodepart{two} Z}}
+            }
+        }
+    ;
+\end{tikzpicture}
+\\ --- USUWANIE --- \\
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=70mm]
+    \tikzstyle{level 2}=[sibling distance=20mm]
+    \node{A \nodepart{two} N} [->]
+        child {node {A}
+            child {node {A}}
+            child {node {A}}
+        }
+        child {node {E \nodepart{two} K}
+            child {node {C \nodepart{two} E}}
+            child {node {I \nodepart{two} I}}
+            child {node {K}}
+        }
+        child {node {R \nodepart{two} U \nodepart{three} Z}
+            child {node {N \nodepart{two} O}}
+            child {node {R \nodepart{two} Ś}}
+            child {node {W \nodepart{three} W}}
+            child {node {Z}}
+        }
+    ;
+\end{tikzpicture}
+\\ --- \\
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=70mm]
+    \tikzstyle{level 2}=[sibling distance=20mm]
+    \node{A \nodepart{two} N} [->]
+        child {node {A}
+            child {node {A}}
+            child {node {A}}
+        }
+        child {node {E \nodepart{two} K}
+            child {node {C \nodepart{two} E}}
+            child {node {I \nodepart{two} I}}
+            child {node {K}}
+        }
+        child {node {R \nodepart{two} W \nodepart{three} Z}
+            child {node {N \nodepart{two} O}}
+            child {node {R \nodepart{two} Ś}}
+            child {node {W}}
+            child {node {Z}}
+        }
+    ;
+\end{tikzpicture}
+\\ --- \\
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=70mm]
+    \tikzstyle{level 2}=[sibling distance=20mm]
+    \node{C \nodepart{two} N} [->]
+        child {node {A}
+            child {node {A}}
+            child {node {A}}
+        }
+        child {node {E \nodepart{two} K}
+            child {node {E}}
+            child {node {I \nodepart{two} I}}
+            child {node {K}}
+        }
+        child {node {R \nodepart{two} W}
+            child {node {N \nodepart{two} O}}
+            child {node {R \nodepart{two} Ś}}
+            child {node {W \nodepart{two} Z}}
+        }
+    ;
+\end{tikzpicture}
+\\ --- \\
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=70mm]
+    \tikzstyle{level 2}=[sibling distance=20mm]
+    \node{C \nodepart{two} N} [->]
+        child {node {A}
+            child {node {A}}
+            child {node {A}}
+        }
+        child {node {E \nodepart{two} K}
+            child {node {E}}
+            child {node {I \nodepart{two} I}}
+            child {node {K}}
+        }
+        child {node {R \nodepart{two} W}
+            child {node {O}}
+            child {node {R \nodepart{two} Ś}}
+            child {node {W \nodepart{two} Z}}
+        }
+    ;
+\end{tikzpicture}
+\\ --- \\
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=70mm]
+    \tikzstyle{level 2}=[sibling distance=20mm]
+    \node{C \nodepart{two} O} [->]
+        child {node {A}
+            child {node {A}}
+            child {node {A}}
+        }
+        child {node {E \nodepart{two} K}
+            child {node {E}}
+            child {node {I \nodepart{two} I}}
+            child {node {K}}
+        }
+        child {node {R \nodepart{two} W}
+            child {node {R}}
+            child {node {Ś}}
+            child {node {W \nodepart{two} Z}}
+        }
+    ;
+\end{tikzpicture}
+\\ --- \\
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=70mm]
+    \tikzstyle{level 2}=[sibling distance=20mm]
+    \node{E \nodepart{two} R} [->]
+        child {node {A}
+            child {node {A}}
+            child {node {C \nodepart{two} E}}
+        }
+        child {node {I \nodepart{two} O}
+            child {node {I}}
+            child {node {K}}
+            child {node {R}}
+        }
+        child {node {W}
+            child {node {Ś}}
+            child {node {W \nodepart{two} Z}}
+        }
+    ;
+\end{tikzpicture}
+\\ --- \\
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=70mm]
+    \tikzstyle{level 2}=[sibling distance=20mm]
+    \node{I \nodepart{two} R} [->]
+        child {node {C \nodepart{two} E}
+            child {node {A}}
+            child {node {E}}
+            child {node {I}}
+        }
+        child {node {O}
+            child {node {K}}
+            child {node {R}}
+        }
+        child {node {W}
+            child {node {Ś}}
+            child {node {W \nodepart{two} Z}}
+        }
+    ;
+\end{tikzpicture}
+\\ --- \\
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=70mm]
+    \tikzstyle{level 2}=[sibling distance=20mm]
+    \node{I} [->]
+        child {node {C \nodepart{two} E}
+            child {node {A}}
+            child {node {E}}
+            child {node {I}}
+        }
+        child {node {O \nodepart{two} Ś \nodepart{three} W}
+            child {node {K}}
+            child {node {R}}
+            child {node {W}}
+            child {node {Z}}
+        }
+    ;
+\end{tikzpicture}
+\\ --- \\
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=70mm]
+    \tikzstyle{level 2}=[sibling distance=20mm]
+    \node{I} [->]
+        child {node {E}
+            child {node {C \nodepart{two} E}}
+            child {node {I}}
+        }
+        child {node {O \nodepart{three} W}
+            child {node {K}}
+            child {node {Ś \nodepart{two} W}}
+            child {node {Z}}
+        }
+    ;
+\end{tikzpicture}
+\\ --- \\
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=70mm]
+    \tikzstyle{level 2}=[sibling distance=20mm]
+    \node{I} [->]
+        child {node {E}
+            child {node {C \nodepart{two} E}}
+            child {node {I}}
+        }
+        child {node {O \nodepart{three} W}
+            child {node {K}}
+            child {node {W}}
+            child {node {Z}}
+        }
+    ;
+\end{tikzpicture}
+\\ --- \\
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=50mm]
+    \tikzstyle{level 2}=[sibling distance=20mm]
+    \node{I} [->]
+        child {node {E}
+            child {node {C \nodepart{two} E}}
+            child {node {I}}
+        }
+        child {node {W}
+            child {node {O \nodepart{three} W}}
+            child {node {Z}}
+        }
+    ;
+\end{tikzpicture}
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=30mm]
+    \node{E \nodepart{two} O \nodepart{three} W} [->]
+        child {node {C \nodepart{two} E}}
+        child {node {I}}
+        child {node {W}}
+        child {node {Z}}
+    ;
+\end{tikzpicture}
+\\ --- \\
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=20mm]
+    \node{E \nodepart{two} O \nodepart{three} W} [->]
+        child {node {C}}
+        child {node {I}}
+        child {node {W}}
+        child {node {Z}}
+    ;
+\end{tikzpicture}
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=20mm]
+    \node{I \nodepart{two} W} [->]
+        child {node {C}}
+        child {node {O \nodepart{two} W}}
+        child {node {Z}}
+    ;
+\end{tikzpicture}
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=20mm]
+    \node{I \nodepart{two} W} [->]
+        child {node {C}}
+        child {node {O}}
+        child {node {Z}}
+    ;
+\end{tikzpicture}
+\\ --- \\
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=20mm]
+    \node{O} [->]
+        child {node {C}}
+        child {node {W \nodepart{two} Z}}
+    ;
+\end{tikzpicture}
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=20mm]
+    \node{W} [->]
+        child {node {O}}
+        child {node {Z}}
+    ;
+\end{tikzpicture}
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=20mm]
+    \node{O \nodepart{two} W} [->]
+    ;
+\end{tikzpicture}
+\begin{tikzpicture}
+    \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+    \tikzstyle{every node}=[bplus]
+    \tikzstyle{level 1}=[sibling distance=20mm]
+    \node{O} [->]
+    ;
+\end{tikzpicture}
+
+\end{document}
