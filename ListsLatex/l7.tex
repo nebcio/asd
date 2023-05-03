@@ -42,8 +42,9 @@ Inne założenia (oprócz zawartych w komentarzach):
 
 \paragraph{Zadanie 2} (2 pkt.) Udowodnij, że żadna z poniższych operacji wykonana na drzewie spełniającym wszystkie warunki B-drzewa, nie prowadzi do ich naruszenia.
 \begin{enumerate}[label=(\alph*)]
-    \item \verb|split_child|, przesuwająca środkowy klucz (medianę) z węzła o $2t-1$ kluczach do rodzica, który ma
-          mniej niż $2t-1$ kluczy, a klucze i dzieci na prawo od mediany -- do nowego brata dodanego po prawej stronie dzielonego węzła.
+    \item \verb|split_child|, przesuwająca środkowy klucz (medianę) z węzła o $2t-1$ kluczach do rodzica, który ma mniej niż $2t-1$ kluczy, a klucze i dzieci na prawo od mediany -- do nowego brata dodanego po prawej stronie dzielonego węzła.
+        Skoro mogliśmy przejść do dziecka to znaczy, że rodzic był niepełen i może przyjąć przynajmniej jeden klucz. Więc nie narusza się maksymalnej liczby kluczy w węźle. \\
+        Węzeł dzielony miał $2t-1$ kluczy, więc bez tego odjętego zostaja nam dwa zestawy po minimalnej liczbie kluczy.
     \item \verb|unsplit_child| odwrotna do \verb|split_child|, sklejająca dwa sąsiednie węzły o minimalnej liczbie
           kluczy $t-1$ oraz klucz stojący w rodzicu między nimi w jeden nowy węzeł. Zakładamy, że rodzic ma co
           najmniej $t$ kluczy lub jest korzeniem.
@@ -236,7 +237,57 @@ Stąd: \\
 
 \paragraph{Zadanie 6} (2 pkt.) Do pustego B-drzewa o $t=2$ wstaw kolejno $22$ litery swojego imienia i nazwiska oraz adresu. Następnie usuń w tej samej kolejności w jakiej były wstawiane.
 
+\pagebreak
 \paragraph{Zadanie 7} Narysuj B-drzewo o $t=3$ zawierające dokładnie $17$ kluczy na trzech poziomach: korzeń, jego dzieci i wnuki. Następnie usuń z tego drzewa korzeń.
 
+\begin{center}
+    \begin{tikzpicture}
+        \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+        \tikzstyle{every node}=[bplus]
+        \tikzstyle{level 1}=[sibling distance=60mm]
+        \tikzstyle{level 2}=[sibling distance=15mm]
+        \node {9} [->]
+        child {node {3 \nodepart{two} 6}
+            child {node {1 \nodepart{two} 2}}
+            child {node {4 \nodepart{two} 5}}
+            child {node {7 \nodepart{two} 8}}
+        }
+        child {node {12 \nodepart{two} 15}
+            child {node {10 \nodepart{two} 11}}
+            child {node {13 \nodepart{two} 14}}
+            child {node {16 \nodepart{two} 17}}
+        };
+    \end{tikzpicture}
+    \begin{tikzpicture}
+        \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+        \tikzstyle{every node}=[bplus]
+        \tikzstyle{level 1}=[sibling distance=60mm]
+        \tikzstyle{level 2}=[sibling distance=15mm]
+        \node {10} [->]
+        child {node {3 \nodepart{two} 6}
+            child {node {1 \nodepart{two} 2}}
+            child {node {4 \nodepart{two} 5}}
+            child {node {7 \nodepart{two} 8}}
+        }
+        child {node {12 \nodepart{two} 15}
+            child {node {11}}
+            child {node {13 \nodepart{two} 14}}
+            child {node {16 \nodepart{two} 17}}
+        };
+    \end{tikzpicture}\\
+    11 nie spełnia sama warunku B-drzewa, więc musimy pożyczyć od rodzica 12, jednak wtedy z 15 dzieje się to samo. Nie mamy jak pożyczyć od rodzica ani od brata. Dlatego musimy złączy je w jeden węzeł. \\ 
+    \begin{tikzpicture}
+        \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+        \tikzstyle{every node}=[bplus]
+        \tikzstyle{level 1}=[sibling distance=30mm]
+        \tikzstyle{level 2}=[sibling distance=15mm]
+        \node {3 \nodepart{two} 6 \nodepart{three} 10 \nodepart{four} 15} [->]
+        child {node {1 \nodepart{two} 2}}
+        child {node {4 \nodepart{two} 5}}
+        child {node {7 \nodepart{two} 8}}
+        child {node {11 \nodepart{two} 12 \nodepart{three} 13 \nodepart{four} 14}}
+        child {node {16 \nodepart{two} 17}};
+    \end{tikzpicture}
+\end{center}
 
 \end{document}
