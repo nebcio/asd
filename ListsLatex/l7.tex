@@ -17,7 +17,7 @@
 \large
 \fontfamily{cmss}\selectfont
 
-\title{Algorytmy i struktury danych (Lista 6)}
+\title{Algorytmy i struktury danych (Lista 7)}
 \date{}
 \maketitle
 
@@ -136,10 +136,8 @@ Stąd: \\
             child {node {15 \nodepart{two} 16 \nodepart{three} 17}}
             child[sibling distance=25mm] {node {20}}
         };
-    \end{tikzpicture} \\
-    .\\
-    Dodanie 18: \\
-    . \\
+    \end{tikzpicture} \\ [5mm]
+    Dodanie 18: \\ [5mm]
     \begin{tikzpicture}
         \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
         \tikzstyle{every node}=[bplus]
@@ -156,8 +154,8 @@ Stąd: \\
             child[sibling distance=25mm] {node {15 \nodepart{two} 16 \nodepart{three} 17}}
             child[sibling distance=20mm] {node {20}}
         };
-    \end{tikzpicture} \\
-    Analogicznie jak wcześniej nie wchodzimy do pełnego węzła, tylko od razu robimy split i 14 idzie do góry. \\
+    \end{tikzpicture} \\ [5mm]
+    Analogicznie jak wcześniej nie wchodzimy do pełnego węzła, tylko od razu robimy split i 14 idzie do góry. \\ [5mm]
     \begin{tikzpicture}
         \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
         \tikzstyle{every node}=[bplus]
@@ -176,8 +174,8 @@ Stąd: \\
             child[sibling distance=25mm] {node {15 \nodepart{two} 16 \nodepart{three} 17}}
             child[sibling distance=20mm] {node {20}}
         };
-    \end{tikzpicture} \\
-    Widząc znowu pełny węzeł robimy split i 16 idzie do rodzica.
+    \end{tikzpicture} \\ [5mm]
+    Widząc znowu pełny węzeł robimy split i 16 idzie do rodzica. \\ [5mm]
     \begin{tikzpicture}
         \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
         \tikzstyle{every node}=[bplus]
@@ -197,7 +195,7 @@ Stąd: \\
             child {node {17 \nodepart{two} 18}}
             child[sibling distance=20mm] {node {20}}
         };
-    \end{tikzpicture} \\
+    \end{tikzpicture} \\ [5mm]
 \end{center}
 
 \paragraph{Zadanie 6} (2 pkt.) Do pustego B-drzewa o $t=2$ wstaw kolejno $22$ litery swojego imienia i nazwiska oraz adresu. Następnie usuń w tej samej kolejności w jakiej były wstawiane.
@@ -222,35 +220,33 @@ Stąd: \\
             child {node {13 \nodepart{two} 14}}
             child {node {16 \nodepart{two} 17}}
         };
-    \end{tikzpicture}
-    \begin{tikzpicture}
-        \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
-        \tikzstyle{every node}=[bplus]
-        \tikzstyle{level 1}=[sibling distance=60mm]
-        \tikzstyle{level 2}=[sibling distance=15mm]
-        \node {10} [->]
-        child {node {3 \nodepart{two} 6}
-            child {node {1 \nodepart{two} 2}}
-            child {node {4 \nodepart{two} 5}}
-            child {node {7 \nodepart{two} 8}}
-        }
-        child {node {12 \nodepart{two} 15}
-            child {node {11}}
-            child {node {13 \nodepart{two} 14}}
-            child {node {16 \nodepart{two} 17}}
-        };
-    \end{tikzpicture}\\
-    11 nie spełnia sama warunku B-drzewa, więc musimy pożyczyć od rodzica 12, jednak wtedy z 15 dzieje się to samo. Nie mamy jak pożyczyć od rodzica ani od brata. Dlatego musimy złączy je w jeden węzeł. \\ 
+    \end{tikzpicture} \\ [5mm]
+    Dzieci korzenia mają minimalną liczbę kluczy, więc robimy po prostu unsplit. \\ [5mm] 
     \begin{tikzpicture}
         \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
         \tikzstyle{every node}=[bplus]
         \tikzstyle{level 1}=[sibling distance=30mm]
         \tikzstyle{level 2}=[sibling distance=15mm]
-        \node {3 \nodepart{two} 6 \nodepart{three} 10 \nodepart{four} 15} [->]
+        \node [rectangle split parts=5]{3 \nodepart{two} 6 \nodepart{three} 9 \nodepart{four} 12 \nodepart{five} 15} [->]
         child {node {1 \nodepart{two} 2}}
         child {node {4 \nodepart{two} 5}}
         child {node {7 \nodepart{two} 8}}
-        child {node {11 \nodepart{two} 12 \nodepart{three} 13 \nodepart{four} 14}}
+        child {node {10 \nodepart{two} 11}}
+        child {node {12 \nodepart{two} 13 \nodepart{three} 14}}
+        child {node {16 \nodepart{two} 17}};
+    \end{tikzpicture} \\ [5mm]
+    Teraz możemy usunąć 9 i zastąpić ją najmniejszym kluczem prawego dziecka. \\ [5mm]
+    \begin{tikzpicture}
+        \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+        \tikzstyle{every node}=[bplus]
+        \tikzstyle{level 1}=[sibling distance=30mm]
+        \tikzstyle{level 2}=[sibling distance=15mm]
+        \node [rectangle split parts=5]{3 \nodepart{two} 6 \nodepart{three} 10 \nodepart{four} 12 \nodepart{five} 15} [->]
+        child {node {1 \nodepart{two} 2}}
+        child {node {4 \nodepart{two} 5}}
+        child {node {7 \nodepart{two} 8}}
+        child {node {11}}
+        child {node {12 \nodepart{two} 13 \nodepart{three} 14}}
         child {node {16 \nodepart{two} 17}};
     \end{tikzpicture}
 \end{center}
