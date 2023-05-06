@@ -120,24 +120,7 @@ Stąd: \\
         \item usuń z tego drzewa 7.
         \item do drzewa widocznego powyżej dodaj 18.
     \end{enumerate}
-    Próbujemy zastąpić 7 przez klucz z dziecka, ale brakuje nam liścia, więc łączymy dzieci (6 i 8) w jeden węzeł. \\
-    \begin{tikzpicture}
-        \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
-        \tikzstyle{every node}=[bplus]
-        \tikzstyle{level 1}=[sibling distance=60mm]
-        \tikzstyle{level 2}=[sibling distance=15mm]
-        \node {9} [->]
-        child {node {-}
-                child {node {6 \nodepart{two} 8}}
-            }
-        child {node {11 \nodepart{two} 14 \nodepart{three} 19}
-                child {node {10}}
-                child {node {12 \nodepart{two} 13}}
-                child[sibling distance=25mm] {node {15 \nodepart{two} 16 \nodepart{three} 17}}
-                child[sibling distance=20mm] {node {20}}
-            };
-    \end{tikzpicture} \\
-    Nowym rodzicem będzie 9 a korzeniem 11 pożyczona z brata 7. Najmłodsze dziecko 11 przerzucamy jako najstarsze dziecko 9. \\
+    Nie wchodzimy do dziecka o minimalnej liczbie ani maksymalnej liczbie węzłów. Dlatego od razu pożyczamy 11 od pełnego węzła i robimy z niej nowy korzeń. \\
     \begin{tikzpicture}
         \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
         \tikzstyle{every node}=[bplus]
@@ -154,7 +137,9 @@ Stąd: \\
             child[sibling distance=25mm] {node {20}}
         };
     \end{tikzpicture} \\
+    .\\
     Dodanie 18: \\
+    . \\
     \begin{tikzpicture}
         \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
         \tikzstyle{every node}=[bplus]
@@ -172,7 +157,7 @@ Stąd: \\
             child[sibling distance=20mm] {node {20}}
         };
     \end{tikzpicture} \\
-
+    Analogicznie jak wcześniej nie wchodzimy do pełnego węzła, tylko od razu robimy split i 14 idzie do góry. \\
     \begin{tikzpicture}
         \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
         \tikzstyle{every node}=[bplus]
@@ -183,7 +168,7 @@ Stąd: \\
             child {node {6}}
             child {node {8}}
         }
-        child {node {11 \nodepart{two} 18}
+        child {node {11}
             child {node {10}}
             child {node {12 \nodepart{two} 13}}
         }
@@ -192,7 +177,7 @@ Stąd: \\
             child[sibling distance=20mm] {node {20}}
         };
     \end{tikzpicture} \\
-
+    Widząc znowu pełny węzeł robimy split i 16 idzie do rodzica.
     \begin{tikzpicture}
         \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
         \tikzstyle{every node}=[bplus]
@@ -207,32 +192,12 @@ Stąd: \\
             child {node {10}}
             child {node {12 \nodepart{two} 13}}
         }
-        child {node {19}
-            child[sibling distance=25mm] {node {15 \nodepart{two} 16 \nodepart{three} 17 \nodepart{four} 18}}
+        child {node {16 \nodepart{two} 19}
+            child[sibling distance=25mm] {node {15 \nodepart{two}}}
+            child {node {17 \nodepart{two} 18}}
             child[sibling distance=20mm] {node {20}}
         };
     \end{tikzpicture} \\
-
-    \begin{tikzpicture}
-        \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
-        \tikzstyle{every node}=[bplus]
-        \tikzstyle{level 1}=[sibling distance=60mm]
-        \tikzstyle{level 2}=[sibling distance=15mm]
-        \node {9 \nodepart{two} 14} [->]
-        child {node {7}
-            child {node {6}}
-            child {node {8}}
-        }
-        child {node {11}
-            child {node {10}}
-            child {node {12 \nodepart{two} 13}}
-        }
-        child {node {17 \nodepart{two} 19}
-            child[sibling distance=20mm] {node {15 \nodepart{two} 16}}
-            child{node {18}}
-            child[sibling distance=20mm] {node {20}}
-        };
-    \end{tikzpicture}
 \end{center}
 
 \paragraph{Zadanie 6} (2 pkt.) Do pustego B-drzewa o $t=2$ wstaw kolejno $22$ litery swojego imienia i nazwiska oraz adresu. Następnie usuń w tej samej kolejności w jakiej były wstawiane.
@@ -250,7 +215,7 @@ Stąd: \\
         child {node {3 \nodepart{two} 6}
             child {node {1 \nodepart{two} 2}}
             child {node {4 \nodepart{two} 5}}
-            child {node {7 \nodepart{two} 8}}
+            child {node {7 \nodepart{two} 8}} 
         }
         child {node {12 \nodepart{two} 15}
             child {node {10 \nodepart{two} 11}}
