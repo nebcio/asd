@@ -1,0 +1,42 @@
+\documentclass[18pt]{extarticle}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.9cm]{geometry}
+\usepackage[edges]{forest}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{tgbonum}
+\usepackage{xcolor}
+
+\begin{document}
+\large
+\fontfamily{cmss}\selectfont
+
+\title{Algorytmy i struktury danych (Lista 7)}
+\date{}
+\maketitle
+
+\text{ Jakie informacje przechowujemy w węźle B-drzewa? Podaj definicję B-drzewa.} \\
+
+\begin{lstlisting}
+    struct node {
+        int key;
+        node* left;
+        node* right;
+        node(int k, node* l, node* r):key(k),left(l),right(r){}
+    };
+\end{lstlisting}
+\paragraph{Zadanie 1} Warunki klucza drzewa BST
+\begin{enumerate}
+    \item Lewa strona zawiera wartości mniejsze od rodzica
+    \item Prawa większe lub równe
+    \item Llucz z wartością
+\end{enumerate}
+\paragraph{Zadanie 3} 
+
+\end{document}
