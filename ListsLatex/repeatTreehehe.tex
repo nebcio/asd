@@ -37,6 +37,288 @@
     \item Prawa większe lub równe
     \item Llucz z wartością
 \end{enumerate}
-\paragraph{Zadanie 3} 
+
+\paragraph{Zadanie 2} Napisz procedurę \verb|node* find(node* tree, int x)|, która zwraca wskaźnik na węzeł zawierający x, lub NULL, jeśli nie ma takiego węzła. \\
+
+\begin{lstlisting}
+    node* find(node* tree, int x) {
+        while (tree != null && tree->key != x)
+            if (x < tree->key) tree = tree->left
+            else tree = tree->right
+    }
+\end{lstlisting}
+
+\paragraph{Zadanie 3} Napisz procedurę \verb|void insert(node*& tree, int x)| (dodaje do drzewa tree klucz x). \\
+
+\begin{lstlisting}
+    node* insert(node*& tree, int x) {
+        node **node = &tree;
+        while (*tree != null)
+            if (x < (**node).key) node = &(**node).left
+            else node = &(**node).right
+
+        *node = new node(x)
+    }
+\end{lstlisting}
+
+\paragraph{Zadanie 4} Drzewo BST o różnych kluczach można odtworzyć z listy par kluczWezła:kluczOjca. (a) Narysuj drzewo BST reprezentowane przez listę par: 1:2, 2:4, 3:2, 4:5, 6:7, 7:9, 8:7, 9:5.
+(b) wypisz jego klucze w porządku: INORDER, (c) PREORDER, (d) POSTORDER
+
+\paragraph{Zadanie 5} Napisz procedurę \verb|void wypisz(node *tree, int order=0)|, która wypisuje klucze drzewa tree w porządku inorder gdy order=0, preorder gdy order=1, postorder gdy order=2 \\
+
+
+\begin{lstlisting}
+    void wypisz(node *tree, int order=0) {
+        
+    }
+
+\end{lstlisting}
+
+\paragraph{Zadanie 6} Jakie informacje przechowujemy w węźle drzewa czerwono-czarnego? Podaj definicję drzewa czerwono czarnego. Zadeklaruj strukturę RBnode tak, by dziedziczyła z node. Czy można dla niej użyć funkcji napisanych w zadaniach 2, 3 i 5? \\
+
+Oprócz lewego/prawego dziecka kolor węzła (czerwony lub czarny). 
+Logika/definicja: drzewo czerwono-czarne jest drzewem BST, w którym każdy węzeł ma dodatkowo kolor (czerwony lub czarny). Węzły czerwone mają 2 czarnych dzieci. Korzeń jest czarny. Każda ścieżka od korzenia do liścia ma tę samą liczbę czarnych węzłów. Każdy liść jest czarny (wartownik) a czerwony węzeł nie może mieć czerwonego dziecka. \\
+
+\begin{lstlisting}
+struct BSTnode:
+    int key;	 
+    node *left;	 
+    node *right;
+end
+
+struct RBTnode : BSTnode:
+    bool color;	 
+end
+\end{lstlisting}
+
+\paragraph{Zadanie 7} Uzasadnij posługując się rysunkiem i opisem, że operacje na drzewie czerwono-czarnym (rotacja i przekolorowanie) nie zmieniają ilości czarnych węzłów, na żadnej ścieżce od korzenia
+do liścia
+
+\paragraph{Zadanie 8} W poniższym drzewie czerwono-czarnym (czarne węzły oznaczono nawiasem kwadratowym), usuń 1, dodaj do wyściowego 10:
+
+\begin{multicols}{2}
+    \begin{lstlisting}
+            [5] 
+       (3)     [11] 
+     [1] [4]  (9) 
+    
+    
+             [5] 
+         (3)     [11] 
+     [1]   [4]  (9) 
+                 (10) 
+     
+             [5] 
+         (3)      [11] 
+     [1]   [4]   (10) 
+                (9) 
+     
+             [5] 
+         (3)      [10] 
+     [1]   [4]   (9) (11)
+     
+             [5] 
+         (3)      (10) 
+     [1]   [4]   [9] [11]
+                 
+    \end{lstlisting}
+    
+    \columnbreak
+    \begin{lstlisting}
+             [5] 
+         (3)      (10) 
+          [4]   [9] [11]
+    
+             [5] 
+         [3]      (10) 
+          (4)   [9] [11]
+    \end{lstlisting}
+    \end{multicols}
+
+\paragraph{Zadanie 9} Jakie informacje przechowujemy w węźle B-drzewa? Podaj definicję B-drzewa
+
+\begin{lstlisting}
+    struct BTnode:
+        int t;              // minimum degree
+        int n;              // current number of keys
+        int* keys;          // array of keys in non-decreasing order
+        bool leaf;          // is it a leaf?
+        BTnode** children;
+    end
+\end{lstlisting}
+Inne założenia (oprócz zawartych w komentarzach):
+\begin{enumerate}
+    \item Węzeł wewnętrzny zawiera $n+1$ wskaźników do synów.
+    \item Klucze rozdzielają dzieci na przedziały (n+1).
+    \item Każdy węzeł różny od korzenia musi mieć co najmniej $t-1$ kluczy i co najwyżej $2t-1$ kluczy. (korzeń może mieć od $1$ do $2t-1$ kluczy)
+    \item Wszystkie liście leżą na tej samej wysokości równym $h$.
+\end{enumerate}
+
+\paragraph{Zadanie 10} Narysuj B-drzewo o t = 3 zawierające dokładnie 17 kluczy na trzech poziomach: korzeń jego dzieci i wnuki. Następnie usuń z tego drzewa korzeń.
+
+
+\begin{center}
+    \begin{tikzpicture}
+        \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+        \tikzstyle{every node}=[bplus]
+        \tikzstyle{level 1}=[sibling distance=60mm]
+        \tikzstyle{level 2}=[sibling distance=15mm]
+        \node {9} [->]
+        child {node {3 \nodepart{two} 6}
+            child {node {1 \nodepart{two} 2}}
+            child {node {4 \nodepart{two} 5}}
+            child {node {7 \nodepart{two} 8}} 
+        }
+        child {node {12 \nodepart{two} 15}
+            child {node {10 \nodepart{two} 11}}
+            child {node {13 \nodepart{two} 14}}
+            child {node {16 \nodepart{two} 17}}
+        };
+    \end{tikzpicture} \\ [5mm]
+    Dzieci korzenia mają minimalną liczbę kluczy, więc robimy po prostu unsplit. \\ [5mm] 
+    \begin{tikzpicture}
+        \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+        \tikzstyle{every node}=[bplus]
+        \tikzstyle{level 1}=[sibling distance=30mm]
+        \tikzstyle{level 2}=[sibling distance=15mm]
+        \node [rectangle split parts=5]{3 \nodepart{two} 6 \nodepart{three} 9 \nodepart{four} 12 \nodepart{five} 15} [->]
+        child {node {1 \nodepart{two} 2}}
+        child {node {4 \nodepart{two} 5}}
+        child {node {7 \nodepart{two} 8}}
+        child {node {10 \nodepart{two} 11}}
+        child {node {12 \nodepart{two} 13 \nodepart{three} 14}}
+        child {node {16 \nodepart{two} 17}};
+    \end{tikzpicture} \\ [5mm]
+    Teraz możemy usunąć 9. Jednak nie możemy zastąpić jej najmniejszym kluczem prawego dziecka, dlatego robimy unsplit dzieci. \\ [5mm]
+    \begin{tikzpicture}
+        \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+        \tikzstyle{every node}=[bplus]
+        \tikzstyle{level 1}=[sibling distance=30mm]
+        \tikzstyle{level 2}=[sibling distance=15mm]
+        \node [rectangle split parts=5]{3 \nodepart{two} 6 \nodepart{three}  12 \nodepart{five} 15} [->]
+        child {node {1 \nodepart{two} 2}}
+        child {node {4 \nodepart{two} 5}}
+        child {node {7 \nodepart{two} 8 \nodepart{three} 11 \nodepart{four} 10}}
+        child {node {13 \nodepart{two} 14}}
+        child {node {16 \nodepart{two} 17}};
+    \end{tikzpicture}
+\end{center}
+
+\paragraph{Zadanie 11} Podano na rysunku B-drzewo o $t=2$:
+\begin{center}
+    \begin{tikzpicture}
+        \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+        \tikzstyle{every node}=[bplus]
+        \tikzstyle{level 1}=[sibling distance=60mm]
+        \tikzstyle{level 2}=[sibling distance=15mm]
+        \node {9} [->]
+        child {node {7}
+                child {node {6}}
+                child {node {8}}
+            }
+        child {node {11 \nodepart{two} 14 \nodepart{three} 19}
+                child {node {10}}
+                child {node {12 \nodepart{two} 13}}
+                child[sibling distance=25mm] {node {15 \nodepart{two} 16 \nodepart{three} 17}}
+                child[sibling distance=20mm] {node {20}}
+            };
+    \end{tikzpicture}
+    \begin{enumerate}[label=-]
+        \item usuń z tego drzewa 7.
+        \item do drzewa widocznego powyżej dodaj 18.
+    \end{enumerate}
+    Nie wchodzimy do dziecka o minimalnej liczbie ani maksymalnej liczbie węzłów. Dlatego od razu pożyczamy 11 od pełnego węzła i robimy z niej nowy korzeń. \\
+    \begin{tikzpicture}
+        \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+        \tikzstyle{every node}=[bplus]
+        \tikzstyle{level 1}=[sibling distance=60mm]
+        \tikzstyle{level 2}=[sibling distance=15mm]
+        \node {11} [->]
+        child {node {9}
+            child {node {6 \nodepart{two} 8}}
+            child {node {10}}
+        }
+        child {node {14 \nodepart{three} 19}
+            child[sibling distance=25mm] {node {12 \nodepart{two} 13}}
+            child {node {15 \nodepart{two} 16 \nodepart{three} 17}}
+            child[sibling distance=25mm] {node {20}}
+        };
+    \end{tikzpicture} \\ [5mm]
+    Dodanie 18: \\ [5mm]
+    \begin{tikzpicture}
+        \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+        \tikzstyle{every node}=[bplus]
+        \tikzstyle{level 1}=[sibling distance=60mm]
+        \tikzstyle{level 2}=[sibling distance=15mm]
+        \node {9} [->]
+        child {node {7}
+            child {node {6}}
+            child {node {8}}
+        }
+        child {node {11 \nodepart{two} 14 \nodepart{three} 19}
+            child {node {10}}
+            child {node {12 \nodepart{two} 13}}
+            child[sibling distance=25mm] {node {15 \nodepart{two} 16 \nodepart{three} 17}}
+            child[sibling distance=20mm] {node {20}}
+        };
+    \end{tikzpicture} \\ [5mm]
+    Analogicznie jak wcześniej nie wchodzimy do pełnego węzła, tylko od razu robimy split i 14 idzie do góry. \\ [5mm]
+    \begin{tikzpicture}
+        \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+        \tikzstyle{every node}=[bplus]
+        \tikzstyle{level 1}=[sibling distance=60mm]
+        \tikzstyle{level 2}=[sibling distance=15mm]
+        \node {9 \nodepart{two} 14} [->]
+        child {node {7}
+            child {node {6}}
+            child {node {8}}
+        }
+        child {node {11}
+            child {node {10}}
+            child {node {12 \nodepart{two} 13}}
+        }
+        child {node {19}
+            child[sibling distance=25mm] {node {15 \nodepart{two} 16 \nodepart{three} 17}}
+            child[sibling distance=20mm] {node {20}}
+        };
+    \end{tikzpicture} \\ [5mm]
+    Widząc znowu pełny węzeł robimy split i 16 idzie do rodzica. \\ [5mm]
+    \begin{tikzpicture}
+        \tikzstyle{bplus}=[rectangle split, rectangle split horizontal, rectangle split ignore empty parts, draw]
+        \tikzstyle{every node}=[bplus]
+        \tikzstyle{level 1}=[sibling distance=60mm]
+        \tikzstyle{level 2}=[sibling distance=15mm]
+        \node {9 \nodepart{two} 14} [->]
+        child {node {7}
+            child {node {6}}
+            child {node {8}}
+        }
+        child {node {11}
+            child {node {10}}
+            child {node {12 \nodepart{two} 13}}
+        }
+        child {node {16 \nodepart{two} 19}
+            child[sibling distance=25mm] {node {15 \nodepart{two}}}
+            child {node {17 \nodepart{two} 18}}
+            child[sibling distance=20mm] {node {20}}
+        };
+    \end{tikzpicture} \\ [5mm]
+\end{center}
+
+\paragraph{Zadanie 12} W B-drzewie o t = 10:
+\begin{enumerate}[label=(\alph*)]
+    \item ile kluczy może zawierać korzeń (podaj przedział), \\
+    Korzeń zawiera od 1 do 19 kluczy. (max $2t-1$)
+    \item ile dzieci może mieć korzeń (podaj przedział), \\
+    Korzeń może mieć od 2 do 20 dzieci. (min $t$ max $2t$)
+    \item ile kluczy może mieć potomek korzenia (podaj przedział), \\
+    Potomek korzenia może mieć od 9 do 19 kluczy. (min $t-1$ max $2t-1$)
+    \item ile dzieci może mieć potomek korzenia (podaj przedział), \\
+    Potomek korzenia może mieć od 10 do 20 dzieci. (min $t$ max $2t$)
+    \item ile maksymalnie węzłów może być na $k$-tym poziomie (przyjmując, że korzeń to poziom $0$) \\
+    Na k-tym poziomie może być maksymalnie $(2t)^k$ węzłów.
+    \item ile łącznie kluczy może być na $k$-tym poziomie (podaj przedział). \\
+    Nie licząc korzenia dla którego minimum to 1 klicz to na k-tym poziomie może być od $2(t-1)t^{k-1}$ do $(2t-1)(2t)^{k}$ kluczy. (min $(2min)t^{k-1}$ max $(max)t^{k}$
+\end{enumerate}
 
 \end{document}
