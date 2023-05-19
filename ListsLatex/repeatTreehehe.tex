@@ -81,13 +81,21 @@
 
 
 \begin{lstlisting}
-    void wypisz(node *tree, int order=0) {
+    void wypisz(node *tree, int order = 0) {
+        if (tree == nullptr) return;
         
+        if (order == 1) std::cout << tree->key;
+        wypisz(tree->left, order);
+        if (order == 0) std::cout << tree->key;
+        wypisz(tree->right, order);
+        if (order == 2) std::cout << tree->key;
     }
-
 \end{lstlisting}
 
 \paragraph{Zadanie 6} Jakie informacje przechowujemy w węźle drzewa czerwono-czarnego? Podaj definicję drzewa czerwono czarnego. Zadeklaruj strukturę RBnode tak, by dziedziczyła z node. Czy można dla niej użyć funkcji napisanych w zadaniach 2, 3 i 5? \\
+
+
+RBT: find tak samo (5), wypisz/print tak samo (5), insert nie (3) \\
 
 Oprócz lewego/prawego dziecka kolor węzła (czerwony lub czarny). 
 Logika/definicja: drzewo czerwono-czarne jest drzewem BST, w którym każdy węzeł ma dodatkowo kolor (czerwony lub czarny). Węzły czerwone mają 2 czarnych dzieci. Korzeń jest czarny. Każda ścieżka od korzenia do liścia ma tę samą liczbę czarnych węzłów. Każdy liść jest czarny (wartownik) a czerwony węzeł nie może mieć czerwonego dziecka. \\
