@@ -61,8 +61,21 @@
     }
 \end{lstlisting}
 
-\paragraph{Zadanie 4} Drzewo BST o różnych kluczach można odtworzyć z listy par kluczWezła:kluczOjca. (a) Narysuj drzewo BST reprezentowane przez listę par: 1:2, 2:4, 3:2, 4:5, 6:7, 7:9, 8:7, 9:5.
+\paragraph{Zadanie 4} Drzewo BST o różnych kluczach można odtworzyć z listy par kluczWezła:kluczOjca. 
+(a) Narysuj drzewo BST reprezentowane przez listę par: 1:2, 2:4, 3:2, 4:5, 6:7, 7:9, 8:7, 9:5.
+\begin{center}
+    \begin{forest}
+        [, phantom, for tree={circle, minimum size=3ex, inner sep=1pt, s sep=5mm, l sep=0mm, l=0mm, anchor=south, fill=black, text=white},
+        [5[4[2[1][3]][, phantom]][9[7[6][8]][, phantom]]]
+        ]
+    \end{forest}
+\end{center}
 (b) wypisz jego klucze w porządku: INORDER, (c) PREORDER, (d) POSTORDER
+\begin{enumerate}
+    \item INORDER:  1 2 3 4 5 6 7 8 9
+    \item PREORDER: 5 4 2 1 3 9 7 6 8
+    \item POSTORDER:1 3 2 4 6 8 7 9 5
+\end{enumerate}
 
 \paragraph{Zadanie 5} Napisz procedurę \verb|void wypisz(node *tree, int order=0)|, która wypisuje klucze drzewa tree w porządku inorder gdy order=0, preorder gdy order=1, postorder gdy order=2 \\
 
