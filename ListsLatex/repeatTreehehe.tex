@@ -95,12 +95,13 @@ Logika/definicja: drzewo czerwono-czarne jest drzewem BST, w którym każdy węz
 \begin{lstlisting}
 struct BSTnode:
     int key;	 
-    node *left;	 
-    node *right;
+    BSTnode *left;	 
+    BSTnode *right;
 end
 
 struct RBTnode : BSTnode:
     bool color;	 
+    RBT* parent;
 end
 \end{lstlisting}
 
